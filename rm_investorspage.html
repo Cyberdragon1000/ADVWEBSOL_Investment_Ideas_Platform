@@ -1,37 +1,256 @@
 <!DOCTYPE html>
-<html>
-    <head>  
-        <title> RM's Investors Page</title>  
-    </head>    
-        <body>    
-            <input type="button" onclick="location.href='./rm_ideaspage.html';" value="switch to ideas list" style="float: right;"></input>
-            <center> <h1>List of Investors</h1> </center>
-            <style>
-                table, th, td {
-                  border:1px solid black;
-                }
-                </style>
-            <table style="width:100%;border:1px solid black">
-                <tr>
-                    <th>Name</th>
-                    <th>Keywords</th>
-                    <th>Risk Rating</th>
-                    <th>Expiry Date</th>
-                    <th>Product Type</th>
-                    <th>Currency</th>
-                    <th>Major Sector</th>
-                    <th>Country</th>
-                </tr>
-                <tr onclick="location.href='./investorprofile.html';">
-                    <td>Investor A</td>
-                    <td>low risk ideas only</td>
-                    <td>0</td>
-                    <td>3/9/23</td>
-                    <td>Bonds</td>
-                    <td>Pounds</td>
-                    <td>education</td>
-                    <td>UK</td>
-                </tr>
-            </table>
-        </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Investors List</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <!--//boostrap icons-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!--google fonts andika-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Andika&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar sticky-top navbar-expand-md mb-1"
+      style="background-color: #009879"
+    >
+      <a class="navbar-brand" href="login.html">
+        <img
+          src="https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg"
+          alt="Logo"
+          width="30"
+          height="30"
+          class="d-inline-block"
+        />
+        Idea site</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#hamburger"
+        aria-controls="hamburger"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="hamburger">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">stuff</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >About us</a
+            >
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">contact us</a>
+              <a class="dropdown-item" href="#">who we are</a>
+            </div>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+        <button
+          class="btn btn-outline-light mx-2"
+          onclick="location.href='./rm_ideaspage.html';"
+        >
+          Ideas list
+        </button>
+        <button
+          class="btn btn-outline-light me-1"
+          onclick="location.href='./login.html';"
+        >
+          Logout
+        </button>
+      </div>
+    </nav>
+    <div class="container text-nowrap bg-white">
+      <h1 class="text-center">List of Investors</h1>
+      <div class="table-responsive rounded">
+        <table class="table table-hover table-bordered mb-0">
+          <thead>
+            <tr>
+              <th class="col-1" id="unmovedtitle">Name</th>
+              <th>Keywords</th>
+              <th>Risk Rating</th>
+              <th>Expiry Date</th>
+              <th>Product Type</th>
+              <th>Currency</th>
+              <th>Major Sector</th>
+              <th>Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-info" onclick="location.href='./ideapage.html';">
+              <td class="col-1">Investor A</td>
+              <td class="col-2">low risk ideas only</td>
+              <td class="col-1">0</td>
+              <td class="col-2">3/9/23</td>
+              <td class="col-1">Bonds</td>
+              <td class="col-1">Pounds</td>
+              <td class="col-1">education</td>
+              <td class="col-1">UK</td>
+            </tr>
+            <tr class="table-light" onclick="location.href='./ideapage.html';">
+              <td class="col-1">Investor B</td>
+              <td class="col-2">risky ideas</td>
+              <td class="col-1">7</td>
+              <td class="col-2">4/9/28</td>
+              <td class="col-1">Bonds</td>
+              <td class="col-1">Pounds</td>
+              <td class="col-1">education</td>
+              <td class="col-1">US</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <footer class="text-center text-white" style="background-color: #009879">
+        <div class="container pt-1 g-0">
+          <div class="row my-0 mx-1">
+            <div class="col-3 text-center">
+              <p class="h5">About Us</p>
+              <p class="h6">
+                We help you find the best ideas to invest in. We connect people
+                with ideas with those who can fund them.
+              </p>
+            </div>
+            <span class="col-1"></span>
+            <div class="col-2">
+              <p class="h5">Sitemap</p>
+              <ul class="mb-0">
+                <li>
+                  <a href="#" class="text-white">Home</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Log in</a>
+                </li>
+              </ul>
+            </div>
+            <span class="col-1"></span>
+            <div class="col-2">
+              <p class="h5">Useful</p>
+
+              <ul class="mb-0">
+                <li>
+                  <a href="#" class="text-white">FAQ</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Help</a>
+                </li>
+              </ul>
+            </div>
+            <span class="col-1"></span>
+            <div class="col-2">
+              <p class="h5">About us</p>
+
+              <ul class="mb-0">
+                <li>
+                  <a href="#" class="text-white">contact</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">who we are</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <hr class="hr-light m-0 g-0" style="opacity: 0.75" />
+          <section class="">
+            <p class="d-flex justify-content-center align-items-center mb-0">
+              Signed In as RM
+              <!--<span class="mx-3">Register for free</span>
+                      <button type="button" class="btn btn-outline-light ">Sign up!</button>-->
+            </p>
+          </section>
+
+          <hr class="hr-light m-0 g-0" style="opacity: 0.75" />
+          <section class="text-center">
+            <a class="btn btn-outline-light m-1" href="#"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a class="btn btn-outline-light m-1" href="#"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a class="btn btn-outline-light m-1" href="#"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a class="btn btn-outline-light m-1" href="#"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a class="btn btn-outline-light m-1" href="#"
+              ><i class="bi bi-google"></i
+            ></a>
+          </section>
+        </div>
+        <div class="text-center" style="background-color: grey">
+          Trade Mark Company
+          <a class="text-white" href="./login.html">Ideas Platform</a>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      body {
+        background-image: url("https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80");
+        background-color: #cccccc;
+        font-family: "Andika", sans-serif;
+      }
+      th:first-child,
+      td:first-child {
+        position: sticky;
+        left: 0px;
+      }
+      thead,
+      #unmovedtitle {
+        background-color: #009879;
+      }
+      .approval {
+        position: sticky;
+        right: 0px;
+      }
+      #decision {
+        background-color: #009879;
+      }
+    </style>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
