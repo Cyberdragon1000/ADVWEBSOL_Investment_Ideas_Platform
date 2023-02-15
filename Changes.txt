@@ -1,0 +1,3 @@
+folder name ideas_platform placed in htdocs in XAMPP
+database name:ideas_platform
+username 'root' and no password
