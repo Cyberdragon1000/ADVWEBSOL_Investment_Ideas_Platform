@@ -1,0 +1,157 @@
+INFO - 2023-02-18 11:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 11:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 11:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-02-18 11:53:59 --> Class "CI_Controller" not found
+in APPPATH\Controllers\Migrate.php on line 3.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Migrate.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Migrate')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Migrate')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\Migrate', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 11:54:16 --> Class "BaseController" not found
+in APPPATH\Controllers\Migrate.php on line 3.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Migrate.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Migrate')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Migrate')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\Migrate', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 11:55:14 --> Too few arguments to function App\Controllers\Migrate::index(), 0 passed in C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php on line 934 and exactly 1 expected
+in APPPATH\Controllers\Migrate.php on line 7.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 11:57:09 --> Undefined property: App\Controllers\Migrate::$load
+in APPPATH\Controllers\Migrate.php on line 8.
+ 1 APPPATH\Controllers\Migrate.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Migrate::$load', 'APPPATH\\Controllers\\Migrate.php', 8)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-18 12:05:41 --> mysqli_sql_exception: Too big precision 255 specified for 'created_at'. Maximum is 6 in C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MySQLi\Connection.php(295): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\Forge.php(546): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\app\Database\Migrations\2023-02-18-093010_Userstable.php(65): CodeIgniter\Database\Forge->createTable('users_login', true)
+#5 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+#6 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\app\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+#8 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(934): App\Controllers\Migrate->index()
+#9 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+#10 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-02-18 12:05:41 --> Too big precision 255 specified for 'created_at'. Maximum is 6
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\Forge.php(546): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `users_login` (
+	`id` INT NOT NULL AUTO_INCREMENT COMMENT \'Identification number\',
+	`user_type` ENUM("IG","RM","C") NOT NULL DEFAULT \'IG\' COMMENT \'Role type\',
+	`first_name` VARCHAR(20) NOT NULL COMMENT \'First name\',
+	`last_name` VARCHAR(20) NOT NULL COMMENT \'Last name\',
+	`email` VARCHAR(50) NOT NULL COMMENT \'email id\',
+	`password` VARCHAR(255) NOT NULL COMMENT \'the password\',
+	`created_at` DATETIME(255) NOT NULL DEFAULT \'CURRENT_TIMESTAMP\' COMMENT \'created date\',
+	`updated_at` DATETIME(255) NOT NULL DEFAULT \'CURRENT_TIMESTAMP\' COMMENT \'details updated date\',
+	CONSTRAINT `pk_users_login` PRIMARY KEY(`id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci')
+ 2 APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php(65): CodeIgniter\Database\Forge->createTable('users_login', true)
+ 3 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 4 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 5 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-02-18 12:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-02-18 12:06:52 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MySQLi\Connection.php(295): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\Forge.php(546): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\app\Database\Migrations\2023-02-18-093010_Userstable.php(63): CodeIgniter\Database\Forge->createTable('users_login', true)
+#5 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+#6 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\app\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+#8 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(934): App\Controllers\Migrate->index()
+#9 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+#10 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\adity\Documents\XAMPP\htdocs\ideas_platform\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-02-18 12:06:52 --> Invalid default value for 'created_at'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\Forge.php(546): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `users_login` (
+	`id` INT NOT NULL AUTO_INCREMENT COMMENT \'Identification number\',
+	`user_type` ENUM("IG","RM","C") NOT NULL DEFAULT \'IG\' COMMENT \'Role type\',
+	`first_name` VARCHAR(20) NOT NULL COMMENT \'First name\',
+	`last_name` VARCHAR(20) NOT NULL COMMENT \'Last name\',
+	`email` VARCHAR(50) NOT NULL COMMENT \'email id\',
+	`password` VARCHAR(255) NOT NULL COMMENT \'the password\',
+	`created_at` DATETIME NOT NULL DEFAULT \'CURRENT_TIMESTAMP\' COMMENT \'created date\',
+	`updated_at` DATETIME NOT NULL DEFAULT \'CURRENT_TIMESTAMP\' COMMENT \'details updated date\',
+	CONSTRAINT `pk_users_login` PRIMARY KEY(`id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci')
+ 2 APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php(63): CodeIgniter\Database\Forge->createTable('users_login', true)
+ 3 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 4 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 5 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 12:15:07 --> Class "App\Database\Migrations\RawSql" not found
+in APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php on line 50.
+ 1 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 2 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 3 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 12:55:02 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert_batch()
+in APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php on line 71.
+ 1 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 2 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 3 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-18 12:59:03 --> Call to undefined method CodeIgniter\Database\MySQLi\Forge::insertbatch()
+in APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php on line 71.
+ 1 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 2 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 3 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-02-18 13:15:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:15:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:16:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-02-18 13:22:14 --> Undefined variable $Ypq1v88iIpL0YUS6ohLSmeXauetxqcW4GEnIHolBVlgxdcNFZwBLC
+in APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php on line 73.
+ 1 APPPATH\Database\Migrations\2023-02-18-093010_Userstable.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Ypq1v88iIpL0YUS6ohLSmeXauetxqcW4GEnIHolBVlgxdcNFZwBLC', 'APPPATH\\Database\\Migrations\\2023-02-18-093010_Userstable.php', 73)
+ 2 SYSTEMPATH\Database\MigrationRunner.php(877): App\Database\Migrations\Userstable->up()
+ 3 SYSTEMPATH\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 4 APPPATH\Controllers\Migrate.php(10): CodeIgniter\Database\MigrationRunner->latest()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Migrate->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Migrate))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-02-18 13:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-02-18 13:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
