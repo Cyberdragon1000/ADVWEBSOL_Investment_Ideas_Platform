@@ -1,54 +1,63 @@
-# CodeIgniter 4 Framework
+# Instructions to use:
 
-## What is CodeIgniter?
+## Downloading base repo(Optional only if direct cloning doesn't work)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+download zip release of code igniter on git page 4.3.1 and extract.
+placed in htdocs in XAMPP (Just to make sure no dependencies are missing)
+[Site link](https://github.com/codeigniter4/framework/releases/tag/v4.3.1)
+[Direct zip file](https://github.com/codeigniter4/framework/archive/refs/tags/v4.3.1.zip)
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Clone Repository
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+git clone the repo into htdocs folder in XAMPP
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+## Getting site ready
 
-## Important Change with index.php
+Rename that folder in htdocs to _**ideas_platform**_ and `http://localhost/ideas_platform/public/` will be location of site
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+go to httpd.conf on XAMPP and in that find
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+- DocumentRoot `"<path to XAMPP installation>/XAMPP/htdocs"`
+  and change it to
+- DocumentRoot `"<path to XAMPP installation>/XAMPP/htdocs/ideas_platform/public"`
 
-**Please** read the user guide for a better explanation of how CI4 works!
+now the site is on `http://localhost/` as we've changed the base directory of XAMPP
 
-## Repository Management
+## Getting Database ready
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Run this url once (no output, can check in database if data is created)
+`http://localhost/index.php/migration`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+3 default users:
 
-## Contributing
+1.  Relationship Manager (named:Tester Alpha)
 
-We welcome contributions from the community.
+    email : **tester1@email.com**
+    password : **password**
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+2.  Idea Giver (named:Tester Beta)
 
-## Server Requirements
+    email : **tester2@email.com**
+    password : **password2**
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+3.  Investor(named:Tester Gamma)
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+    email : **tester3@email.com**
+    password : **password3**
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+//-----------extra info ---------------------------------------------------------------------------------
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+database name:ideas_platform
+username 'root' and no password
+
+chanes in .env file(if file is env change name to .env)
+uncomment app.baseURL and set it as:
+app.baseURL = 'http://localhost/'
+uncomment CI_ENVIRONMENT and set it to
+CI_ENVIRONMENT = development
+uncomment first 5 lines of database section and set it to(password is blank):
+database.default.hostname = localhost
+database.default.database = ideas_platform
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
