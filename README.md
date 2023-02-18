@@ -25,6 +25,7 @@ now the site is on `http://localhost/` as we've changed the base directory of XA
 
 ## Getting Database ready
 First open mySQL Admin page and create a database called _**ideas_platform**_
+
 Run this url once (no output, can check in database if tables are created)
 `http://localhost/index.php/migration`
 
