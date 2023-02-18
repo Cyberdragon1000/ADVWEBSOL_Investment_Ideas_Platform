@@ -7,10 +7,11 @@ use App\Models\UserModel;
 
 class Users extends BaseController
 {
-	public function index()
+	public function login()
 	{
 		$data = [];
 		helper(['form']);
+		$data['title'] = ucfirst('login'); // Capitalize the first letter
 
 
 		if ($this->request->getMethod() == 'post') {
@@ -22,7 +23,7 @@ class Users extends BaseController
 
 			$errors = [
 				'password' => [
-					'validateUser' => 'Email or Password don\'t match'
+					'validateUser' => 'Email or Password doesn\'t match'
 				]
 			];
 
@@ -49,9 +50,10 @@ class Users extends BaseController
 	{
 		$data = [
 			'id' => $user['id'],
-			'firstname' => $user['firstname'],
-			'lastname' => $user['lastname'],
+			'first_name' => $user['first_name'],
+			'last_name' => $user['last_name'],
 			'email' => $user['email'],
+			'user_type' => $user['user_type'],
 			'isLoggedIn' => true,
 		];
 
@@ -63,15 +65,17 @@ class Users extends BaseController
 	{
 		$data = [];
 		helper(['form']);
+		$data['title'] = ucfirst('register'); // Capitalize the first letter
 
 		if ($this->request->getMethod() == 'post') {
 			//let's do the validation here
 			$rules = [
 				'firstname' => 'required|min_length[3]|max_length[20]',
 				'lastname' => 'required|min_length[3]|max_length[20]',
-				'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+				'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[user_login.email]',
 				'password' => 'required|min_length[8]|max_length[255]',
 				'password_confirm' => 'matches[password]',
+				'usertype' => 'required|in_list[IG,RM,C]',
 			];
 
 			if (!$this->validate($rules)) {
@@ -80,9 +84,10 @@ class Users extends BaseController
 				$model = new UserModel();
 
 				$newData = [
-					'firstname' => $this->request->getVar('firstname'),
-					'lastname' => $this->request->getVar('lastname'),
+					'first_name' => $this->request->getVar('firstname'),
+					'last_name' => $this->request->getVar('lastname'),
 					'email' => $this->request->getVar('email'),
+					'user_type' => $this->request->getVar('usertype'),
 					'password' => $this->request->getVar('password'),
 				];
 				$model->save($newData);
@@ -143,9 +148,20 @@ class Users extends BaseController
 		echo view('templates/footer');
 	}
 
+	public function session_exists()
+	{
+		if(session_status() == PHP_SESSION_ACTIVE)
+		{	
+			return true;
+		}
+		return false;
+	}
+
 	public function logout()
 	{
 		session()->destroy();
 		return redirect()->to('/');
 	}
+
+
 }

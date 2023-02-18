@@ -37,6 +37,23 @@
                 <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="">
               </div>
             </div>
+            <div class="mb-3 col-12 ">
+              <div class="form-group">
+                <label for="usertype">User Type : </label>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="usertype" id="ideagiver" value="IG" checked>
+                <label class="form-check-label" for="inlineRadio1">Idea Giver</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="usertype" id="rm" value="RM">
+                <label class="form-check-label" for="inlineRadio2">Relationship Manager</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="usertype" id="investor" value="C">
+                <label class="form-check-label" for="inlineRadio3">Investor</label>
+                </div>
+              </div>
+            </div>
             <?php if (isset($validation)) : ?>
               <div class="col-12">
                 <div class="alert alert-danger" role="alert">
@@ -51,7 +68,7 @@
               <button type="submit" class="btn btn-primary">Register</button>
             </div>
             <div class="col-12 col-sm-8 text-end">
-              <a href="/">Existing User?</a>
+              <a href="/login">Existing User?</a>
             </div>
           </div>
         </form>

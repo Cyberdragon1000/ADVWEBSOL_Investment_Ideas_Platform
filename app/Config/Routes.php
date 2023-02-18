@@ -30,6 +30,12 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->match(['get','post'],'/login', 'Users::login');
+$routes->match(['get','post'],'/register', 'Users::register');
+$routes->match(['get','post'],'/dashboard', 'Dashboard::index');
+$routes->get('/logout', 'Users::logout');
+$routes->get('/investor_list','Dashboard::rmswitch');
+$routes->get('/migration','Migrate::index');
 
 /*
  * --------------------------------------------------------------------
