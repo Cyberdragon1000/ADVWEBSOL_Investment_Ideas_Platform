@@ -24,8 +24,8 @@ go to httpd.conf on XAMPP and in that find
 now the site is on `http://localhost/` as we've changed the base directory of XAMPP
 
 ## Getting Database ready
-
-Run this url once (no output, can check in database if data is created)
+First open mySQL Admin page and create a database called _**ideas_platform**_
+Run this url once (no output, can check in database if tables are created)
 `http://localhost/index.php/migration`
 
 3 default users:
