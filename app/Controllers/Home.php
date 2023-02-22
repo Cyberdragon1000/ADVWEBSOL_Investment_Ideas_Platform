@@ -23,5 +23,25 @@ class Home extends BaseController
         //return view('welcome_message');
     }
 
+    public function tempideaform()
+    {
+        $page='ideaform';
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        return view('templates/header', $data)
+            . view('idea_page_edit')
+            . view('templates/footer');
+    }
+        public function tempinvestorform()
+    {
+        $page='investorform';
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        return view('templates/header', $data)
+            . view('investor_profile_page')
+            . view('templates/footer');
+    }
+
         
 }

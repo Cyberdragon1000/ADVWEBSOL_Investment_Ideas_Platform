@@ -36,6 +36,8 @@ $routes->match(['get','post'],'/dashboard', 'Dashboard::index');
 $routes->get('/logout', 'Users::logout');
 $routes->get('/investor_list','Dashboard::rmswitch');
 $routes->get('/migration','Migrate::index');
+$routes->get('/ideaform','Home::tempideaform');
+$routes->get('/investorform','Home::tempinvestorform');
 
 /*
  * --------------------------------------------------------------------
