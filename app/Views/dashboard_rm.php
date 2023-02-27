@@ -8,61 +8,47 @@
 <div class="container text-nowrap bg-white">
       <h1 class="text-center">List of ideas</h1>
       <div class="table-responsive rounded">
-        <table class="table table-hover table-bordered mb-0">
-          <thead>
-            <tr>
-              <th class="col-1" id="unmovedtitle">Title</th>
+        <table class="table table-hover table-bordered mb-0 mytable">
+          <thead >
+            <tr class="text-center">
+              <th   id="unmovedtitle">No.</th>
+              <th>Title</th>
               <th>Abstract</th>
               <th>Risk Rating</th>
               <th>Published Date</th>
+              <th>Author's Name</th>
               <th>Expiry Date</th>
               <th>Product Type</th>
+              <th>Instruments</th>
               <th>Currency</th>
               <th>Major Sector</th>
+              <th>Minor Sector</th>
+              <th>Region</th>
               <th>Country</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="table-info" onclick="location.href='./ideapage.html';">
-              <td class="col-1">Idea A</td>
-              <td class="col-2">
-                Very good investment
-                zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
-              </td>
-              <td class="col-1">0</td>
-              <td class="col-2">7/1/23</td>
-              <td class="col-2">7/1/24</td>
-              <td class="col-1">Bonds</td>
-              <td class="col-1">Pounds</td>
-              <td class="col-1">Health</td>
-              <td class="col-1">UK</td>
+          <?php foreach ($ideas as $idea): ?>
+            <tr class="<?= /*(date_add(new DateTime('Y-m-d H:i:s',time()),date_interval_create_from_date_string("30 days")) > $idea['expires_on']) ? 'table-warning' :*/'table-info'   ?> fixedhrows" onclick="location.href='./ideapage.html';">
+            <td  ><?= $idea['idea_number'] ?></td>
+            <td  ><?= $idea['title'] ?></td>
+            <td  ><?= $idea['risk']  ?></td>
+            <td ><?= $idea['abstract']  ?></td>
+            <td  ><?= $idea['published_on']  ?></td>
+            <td  ><?= $idea['expires_on']  ?></td>
+            <td  ><?= $idea['author_id']  ?></td>
+            <td  ><?= $idea['product_type']  ?></td>
+            <td  ><?= $idea['instruments']  ?></td>
+            <td  ><?= $idea['currency']  ?></td>
+            <td  ><?= $idea['major_sector']  ?></td>
+            <td  ><?= $idea['minor_sector']  ?></td>
+            <td  ><?= $idea['region']  ?></td>
+            <td  ><?= $idea['country']  ?></td>
             </tr>
+			  <?php endforeach; ?>
+            
 
-            <tr class="table-light" onclick="location.href='./ideapage.html';">
-              <td class="col-1">Idea A</td>
-              <td class="col-2">Very good investment aaaaaaa</td>
-              <td class="col-1">0</td>
-              <td class="col-2">7/1/23</td>
-              <td class="col-2">7/1/24</td>
-              <td class="col-1">Bonds</td>
-              <td class="col-1">Pounds</td>
-              <td class="col-1">Health</td>
-              <td class="col-1">UK</td>
-            </tr>
-            <tr
-              class="table-warning"
-              onclick="location.href='./ideapage.html';"
-            >
-              <td class="col-1">Idea A</td>
-              <td class="col-2">Very old investment aaaaaaa</td>
-              <td class="col-1">0</td>
-              <td class="col-2">7/1/23</td>
-              <td class="col-2">7/1/24</td>
-              <td class="col-1">Bonds</td>
-              <td class="col-1">Pounds</td>
-              <td class="col-1">Health</td>
-              <td class="col-1">UK</td>
-            </tr>
+<!--            <tr class="table-light" onclick="location.href='./ideapage.html';"> -->
           </tbody>
         </table>
       </div>
@@ -122,3 +108,10 @@
         </table>
       </div>
     </div>
+
+    <style>
+
+    table.mytable tr.fixedhrows{
+   height: 10%;
+    }
+    </style>

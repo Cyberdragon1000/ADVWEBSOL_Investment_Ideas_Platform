@@ -23,7 +23,6 @@
       href="https://fonts.googleapis.com/css2?family=Andika&display=swap"
       rel="stylesheet"
     />
-<!-- glen's links delete after checking compatibility-->
     <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body>

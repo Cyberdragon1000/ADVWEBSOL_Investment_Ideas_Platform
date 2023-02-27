@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\RMIdeas;
 
 class Dashboard extends BaseController
 {
@@ -12,6 +13,8 @@ class Dashboard extends BaseController
 
 		switch ($usertype) {
 			case "RM":
+				$model = new RMIdeas();
+        		$data['ideas'] = $model->getideasrm();
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
 			  break;
 			case "C":
