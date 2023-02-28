@@ -30,12 +30,4 @@ class Dashboard extends BaseController
 		
 	}
 
-	public function rmswitch(){
-		$data = [];
-		$data['title'] = ucfirst('dashboard');
-		$usertype = session('user_type');
-		if (session('user_type')=='RM') {
-			return view('templates/header', $data) . view('investor_list_rm') . view('templates/footer');
-		}
-	}
 }

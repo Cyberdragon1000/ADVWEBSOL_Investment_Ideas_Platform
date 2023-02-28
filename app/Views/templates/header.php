@@ -53,13 +53,13 @@
       </button>
       <div class="collapse navbar-collapse" id="hamburger">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
+          <li class="nav-item mx-1 my-1 ">
             <a class="nav-link active" href="#">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-1 my-1 ">
             <a class="nav-link" href="#">stuff</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-1 my-1 ">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -73,6 +73,10 @@
             </div>
           </li>
         </ul>
+        <button
+          class="btn btn-outline-light mx-1 my-1 listtoggle <?= (session_status() == PHP_SESSION_ACTIVE and session()->get('user_type')=='RM' ) ? '' :'d-none' ?>"
+          onclick="togglelists()"
+        >Investor List</button>
         <form class="d-flex" role="search">
           <input
             class="form-control me-2"
@@ -96,12 +100,7 @@
           Login
         </button>
         <button
-          class="btn btn-outline-light mx-1 <?= (session_status() == PHP_SESSION_ACTIVE and session()->get('user_type')=='RM' ) ? '' :'d-none' ?>"
-          onclick="location.href= '/investor_list';"
-        > Investor List
-        </button>
-        <button
-          class="btn btn-outline-light me-1 <?= (session_status() == PHP_SESSION_NONE) ? 'd-none' : '' ?>"
+          class="btn btn-outline-light me-1 my-1 <?= (session_status() == PHP_SESSION_NONE) ? 'd-none' : '' ?>"
           onclick="location.href='/logout';"
         >
           Logout
