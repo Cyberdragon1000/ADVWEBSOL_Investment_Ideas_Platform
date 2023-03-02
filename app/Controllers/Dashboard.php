@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\RMIdeas;
+use App\Models\RMinvestors;
 
 class Dashboard extends BaseController
 {
@@ -15,6 +16,9 @@ class Dashboard extends BaseController
 			case "RM":
 				$model = new RMIdeas();
         		$data['ideas'] = $model->getideasrm();
+				$model = new RMinvestors();
+        		$data['investorprefs'] = $model->getinvestorsrm();
+        		$data['decisions'] = $model->getinvestordecision();
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
 			  break;
 			case "C":
@@ -24,7 +28,7 @@ class Dashboard extends BaseController
 				return view('templates/header', $data) . view('dashboard_ig') . view('templates/footer');
 			  break;
 			default:
-			  echo "Login pls!";
+				return redirect()->to('/');;
 		  }
 
 		

@@ -71,7 +71,7 @@ class Userstable extends Migration
         $data = array(
             array('id' => "1", 'user_type' =>"RM" , 'first_name' =>"Tester",'last_name' =>"Alpha" , 'email' =>"tester1@email.com" , 'password' =>"$2y$10$.NEeimnC82WGg0822dYq.eyYjQu4ocMXedPVaIGXoFuNWokVmdICi",'created_at' =>"2023-02-18 13:15:15",'updated_at' =>"2023-02-18 13:15:15"),//password
             array('id' => "2", 'user_type' =>"IG" , 'first_name' =>"Tester",'last_name' =>"Beta" , 'email' =>"tester2@email.com" , 'password' =>"$2y$10\$Ypq1v88iIpL0YUS6ohLSmeXauetxqcW4GEnIHolBVlgxdcNFZwBLC",'created_at' =>"2023-02-18 13:15:48",'updated_at' =>"2023-02-18 13:15:48"),//password2
-            array('id' => "3", 'user_type' =>"C" , 'first_name' =>"Tester",'last_name' =>"Gamma" , 'email' =>"tester3@email.com" , 'password' =>"$2y$10\$hx/.7iotMTN1Q2UNrbAdk.PLZo63/mEtN9cA9jIvGh.d0uesw0RAOpassword3",'created_at' =>"2023-02-18 13:16:18",'updated_at' =>"2023-02-18 13:16:18")//password3
+            array('id' => "3", 'user_type' =>"C" , 'first_name' =>"Tester",'last_name' =>"Gamma" , 'email' =>"tester3@email.com" , 'password' =>"$2y$10\$hx/.7iotMTN1Q2UNrbAdk.PLZo63/mEtN9cA9jIvGh.d0uesw0RAO",'created_at' =>"2023-02-18 13:16:18",'updated_at' =>"2023-02-18 13:16:18")//password3
          );
         $this->db->table('user_login')->insertbatch($data);
     }

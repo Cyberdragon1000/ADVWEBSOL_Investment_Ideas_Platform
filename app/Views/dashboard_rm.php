@@ -55,53 +55,36 @@
       <div class="table-responsive rounded">
         <table class="table table-hover table-bordered mb-0">
           <thead>
-            <tr>
-              <th id="unmovedtitle">Title</th>
+          <tr class="text-center">
+              <th   id="unmovedtitle">No.</th>
+              <th>Title</th>
               <th>Abstract</th>
               <th>Risk Rating</th>
-              <th>Published Date</th>
               <th>Expiry Date</th>
-              <th>Product Type</th>
-              <th>Currency</th>
-              <th>Major Sector</th>
-              <th>Country</th>
+              <th>Given Investor</th>
               <th id="decision" class="approval">Decision</th>
-            </tr>
+          </tr>
           </thead>
+
+<!--        <?php //if($condition) : ?>
+<?php //elseif($anotherCondition) : ?>
+    more html
+<?php// else : ?>
+    even more html
+<?php// endif; ?>
+-->
           <tbody>
-            <tr
-              class="table-success"
-              onclick="location.href='./ideapage.html';"
-            >
-              <td>Idea old</td>
-              <td>
-                good investment
-                zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
-              </td>
-              <td>2</td>
-              <td>5/5/22</td>
-              <td>4/3/23</td>
-              <td>Bonds</td>
-              <td>Rupees</td>
-              <td>Sports</td>
-              <td>India</td>
-              <td class="approval">Accepted</td>
-            </tr>
-            <tr class="table-danger" onclick="location.href='./ideapage.html';">
-              <td>Idea old</td>
-              <td>
-                good investment
-                zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
-              </td>
-              <td>2</td>
-              <td>5/5/22</td>
-              <td>4/3/23</td>
-              <td>Bonds</td>
-              <td>Rupees</td>
-              <td>Sports</td>
-              <td>India</td>
-              <td class="approval">Rejected</td>
-            </tr>
+          <?php foreach ($decisions as $decision): ?>
+              <tr class="table-success fixedhrows" onclick="location.href='./ideapage.html';">
+                <td  ><?= $decision['idea_number'] ?></td>
+                <td  ><?= $decision['title'] ?></td>
+                <td  ><?= $decision['abstract']  ?></td>
+                <td  ><?= $decision['risk']  ?></td>
+                <td  ><?= $decision['expires_on']  ?></td>
+                <td  ><?= $decision['name']  ?></td>
+                <td class="approval"><?=$decision['decision']  ?></td>
+              </tr>
+          <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -112,38 +95,36 @@
       <div class="table-responsive rounded">
         <table class="table table-hover table-bordered mb-0">
           <thead>
-            <tr>
-              <th class="col-1" id="unmovedtitle">Name</th>
-              <th>Keywords</th>
+            <tr class="text-center">
+              <th id="unmovedtitle">Name</th>
+              <th>Key terms</th>
               <th>Risk Rating</th>
               <th>Expiry Date</th>
               <th>Product Type</th>
+              <th>Instruments</th>
               <th>Currency</th>
               <th>Major Sector</th>
+              <th>Minor Sector</th>
+              <th>Region</th>
               <th>Country</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="table-info" onclick="location.href='./ideapage.html';">
-              <td class="col-1">Investor A</td>
-              <td class="col-2">low risk ideas onlyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</td>
-              <td class="col-1">0</td>
-              <td class="col-2">3/9/23</td>
-              <td class="col-1">Bonds</td>
-              <td class="col-1">Pounds</td>
-              <td class="col-1">education</td>
-              <td class="col-1">UK</td>
-            </tr>
-            <tr class="table-light" onclick="location.href='./ideapage.html';">
-              <td class="col-1">Investor B</td>
-              <td class="col-2">risky ideas</td>
-              <td class="col-1">7</td>
-              <td class="col-2">4/9/28</td>
-              <td class="col-1">Bonds</td>
-              <td class="col-1">Pounds</td>
-              <td class="col-1">education</td>
-              <td class="col-1">US</td>
-            </tr>
+          <?php foreach ($investorprefs as $investor): ?>
+              <tr class="<?= /*(date_add(new DateTime('Y-m-d H:i:s',time()),date_interval_create_from_date_string("30 days")) > $investor['expires_on']) ? 'table-warning' :*/'table-info'   ?> fixedhrows" onclick="location.href='./ideapage.html';">
+              <td  ><?= $investor['name'] ?></td>
+              <td  ><?= $investor['key_terms'] ?></td>
+              <td  ><?= $investor['risk']  ?></td>
+              <td  ><?= $investor['expires_on']  ?></td>
+              <td  ><?= $investor['product_type']  ?></td>
+              <td  ><?= $investor['instruments']  ?></td>
+              <td  ><?= $investor['currency']  ?></td>
+              <td  ><?= $investor['major_sector']  ?></td>
+              <td  ><?= $investor['minor_sector']  ?></td>
+              <td  ><?= $investor['region']  ?></td>
+              <td  ><?= $investor['country']  ?></td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>

@@ -30,7 +30,7 @@
       class="navbar sticky-top navbar-expand-md mb-1"
       style="background-color: #009879"
     >
-      <a class="navbar-brand" href="<?= (session_status() == PHP_SESSION_ACTIVE) ? '/dashboard' : '/login' ?>">
+      <a class="navbar-brand" href="<?= (session_status() == PHP_SESSION_ACTIVE) ? '/dashboard' : '/' ?>">
         <img
           src="https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg"
           alt="Logo"

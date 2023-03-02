@@ -93,7 +93,7 @@ class Users extends BaseController
 				$model->save($newData);
 				$session = session();
 				$session->setFlashdata('success', 'Successful Registration');
-				return redirect()->to('/');
+				return redirect()->to('/dashboard');
 			}
 		}
 
