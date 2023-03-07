@@ -32,14 +32,14 @@
     >
       <a class="navbar-brand" href="<?= (session_status() == PHP_SESSION_ACTIVE) ? '/dashboard' : '/' ?>">
         <img
-          src="https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg"
+          src="https://ih1.redbubble.net/image.2872970304.9154/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg"
           alt="Logo"
           width="30"
           height="30"
           class="d-inline-block"
         />
-        Stonks</a
-      >
+        <b>Stonks</b>
+        </a>
       <button
         class="navbar-toggler"
         type="button"

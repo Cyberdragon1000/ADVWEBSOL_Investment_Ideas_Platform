@@ -60,21 +60,15 @@
 
           <hr class="hr-light m-0 g-0" style="opacity: 0.75" />
           <section class="text-center">
-            <a class="btn btn-outline-light m-1" href="#"
-              ><i class="bi bi-twitter"></i
-            ></a>
-            <a class="btn btn-outline-light m-1" href="#"
-              ><i class="bi bi-facebook"></i
-            ></a>
-            <a class="btn btn-outline-light m-1" href="#"
-              ><i class="bi bi-instagram"></i
-            ></a>
-            <a class="btn btn-outline-light m-1" href="#"
-              ><i class="bi bi-linkedin"></i
-            ></a>
-            <a class="btn btn-outline-light m-1" href="#"
-              ><i class="bi bi-google"></i
-            ></a>
+          <a class="btn btn-outline-light m-1" href="https://www.instagram.com/stonks/">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a class="btn btn-outline-light m-1" href="https://twitter.com/STONKSFinance">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a class="btn btn-outline-light m-1" href="https://www.facebook.com/stonksdotcom/">
+              <i class="bi bi-facebook"></i>
+            </a>
           </section>
         </div>
         <div class="text-center" style="background-color: grey">
