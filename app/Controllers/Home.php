@@ -8,6 +8,9 @@ class Home extends BaseController
 {
     public function index()
     {
+        if (session('user_type')) {
+            return redirect()->to('/dashboard');
+        }
         $page='homepage';
 
         if (! is_file(APPPATH . 'Views/' . $page . '.php')) {

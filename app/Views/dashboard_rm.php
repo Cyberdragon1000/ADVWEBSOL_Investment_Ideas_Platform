@@ -66,13 +66,7 @@
           </tr>
           </thead>
 
-<!--        <?php //if($condition) : ?>
-<?php //elseif($anotherCondition) : ?>
-    more html
-<?php// else : ?>
-    even more html
-<?php// endif; ?>
--->
+
           <tbody>
           <?php foreach ($decisions as $decision): ?>
               <tr class="table-success fixedhrows" onclick="location.href='./ideapage.html';">
@@ -157,3 +151,48 @@ function togglelists(){
    height: 10%;
     }
     </style>
+
+<!--
+<a class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#firstpopup" role="button">Open first modal</a>
+
+<div class="modal fade" id="firstpopup" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        
+      <div class="modal-header h5 fw-bold">Modal 1
+        <button class="btn-close" data-bs-dismiss="modal" ></button>
+      </div>
+      
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#popup2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="popup2" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal 2</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#firstpopup" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
+  -->
+
+

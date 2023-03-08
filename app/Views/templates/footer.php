@@ -14,10 +14,10 @@
               <p class="h5">Sitemap</p>
               <ul class="mb-0">
                 <li>
-                  <a href="#" class="text-white">Home</a>
+                  <a href="/" class="text-white">Home</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white">Log in</a>
+                  <a href="#" class="text-white">Some stuff</a>
                 </li>
               </ul>
             </div>
@@ -52,9 +52,10 @@
           <hr class="hr-light m-0 g-0" style="opacity: 0.75" />
           <section class="">
             <p class="d-flex justify-content-center align-items-center mb-0">
-            <?= (session_status() == PHP_SESSION_ACTIVE) ? 'Signed in as ' . session()->get('first_name'):'' ?>
-              <span class="mx-3 <?= (session_status() == PHP_SESSION_ACTIVE) ? 'd-none' : '' ?>">Register for free</span>
-            <button type="button" class="btn btn-outline-light <?= (session_status() == PHP_SESSION_ACTIVE) ? 'd-none' : '' ?>">Sign up!</button>
+            <?= (session('user_type')) ? 'Signed in as ' . session()->get('first_name'):'' ?>
+              <span class="mx-3 <?= (session('user_type')) ? 'd-none' : '' ?>">Register for free</span>
+            <button type="button" onclick="location.href='/register';" class="btn btn-outline-light <?= (session('user_type')) ? 'd-none' : '' ?>">Sign up!</button>
+            <button type="button" onclick="location.href='/logout';" class="btn btn-outline-light <?= (session('user_type')) ? '' : 'd-none' ?>">Log Out</button>
             </p>
           </section>
 

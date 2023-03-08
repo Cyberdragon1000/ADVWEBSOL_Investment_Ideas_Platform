@@ -30,7 +30,7 @@
       class="navbar sticky-top navbar-expand-md mb-1"
       style="background-color: #009879"
     >
-      <a class="navbar-brand" href="<?= (session_status() == PHP_SESSION_ACTIVE) ? '/dashboard' : '/' ?>">
+      <a class="navbar-brand" href="/">
         <img
           src="https://ih1.redbubble.net/image.2872970304.9154/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg"
           alt="Logo"
@@ -54,7 +54,7 @@
       <div class="collapse navbar-collapse" id="hamburger">
         <ul class="navbar-nav me-auto">
           <li class="nav-item mx-1 my-1 ">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="/">Home</a>
           </li>
           <li class="nav-item mx-1 my-1 ">
             <a class="nav-link" href="#">stuff</a>
@@ -73,10 +73,7 @@
             </div>
           </li>
         </ul>
-        <button
-          class="btn btn-outline-light mx-1 my-1 listtoggle <?= (session_status() == PHP_SESSION_ACTIVE and session()->get('user_type')=='RM' ) ? '' :'d-none' ?>"
-          onclick="togglelists()"
-        >Investor List</button>
+ 
         <form class="d-flex" role="search">
           <input
             class="form-control me-2"
@@ -87,23 +84,105 @@
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
         
-        
         <button
-          class="btn btn-outline-light ms-1 <?= (session_status() == PHP_SESSION_ACTIVE) ? 'd-none' : '' ?>"
+          class="btn btn-outline-light mx-1 my-1 listtoggle <?= (session()->get('user_type')=='RM' ) ? '' :'d-none' ?>"
+          onclick="togglelists()"
+        >Investor List</button>   
+        <button
+          class="btn btn-outline-light ms-1 <?= (session('user_type')) ? 'd-none' : '' ?>"
           onclick="location.href='/register';"
         >
           Register
         </button><button
-          class="btn btn-outline-light mx-1 <?= (session_status() == PHP_SESSION_ACTIVE) ? 'd-none' : '' ?>"
+          class="btn btn-outline-light mx-1 <?= (session('user_type')) ? 'd-none' : '' ?>"
           onclick="location.href='/login';"
         >
           Login
         </button>
         <button
-          class="btn btn-outline-light me-1 my-1 <?= (session_status() == PHP_SESSION_NONE) ? 'd-none' : '' ?>"
+          class="btn btn-outline-light me-1 my-1 <?= (session('user_type')) ? '' : 'd-none' ?>"
+          data-bs-toggle="modal"  data-bs-target="#profilepage"
+        >Profile </button>
+        <button
+          class="btn btn-outline-light me-1 my-1 <?= (session('user_type')) ? '' : 'd-none' ?>"
           onclick="location.href='/logout';"
         >
           Logout
         </button>
       </div>
     </nav>
+
+<div class="modal fade" id="profilepage" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        
+      <div class="modal-header h5 fw-bold "><div class="col-11 modal-title text-center">My Profile</div>
+        <button class="btn-close col-1" data-bs-dismiss="modal" ></button>
+      </div>
+      
+      
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+              alt="Avatar"
+              style="max-width: 50%;height: auto;"
+              class="d-inline-block rounded mx-auto "
+            />
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-3 h6 mb-0">Full Name
+              </div>
+              <div class="col-9 text-secondary">
+                  <?= session('first_name') ?> <?= session('last_name') ?>
+              </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 h6 mb-0">Account type:</h6>
+            </div>
+            <div class="col-9 text-secondary">
+            <?php if(session('user_type')=='RM') :
+                            echo "Relation Manager";
+                        elseif(session('user_type')=='IG') :
+                            echo "Idea Giver";
+                        else :
+                            echo "Investor";
+                        endif; ?>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 h6 mb-0">Email</h6>
+            </div>
+            <div class="col-9 text-secondary">
+            <?= session('email') ?>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 h6 mb-0">Mobile</h6>
+            </div>
+            <div class="col-9 text-secondary">
+              +91 992304249
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 h6 mb-0">Address</h6>
+            </div>
+            <div class="col-9 text-secondary">
+             MG Road, India
+            </div>
+          </div>
+        </div>
+    </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Edit Profile</button>
+      </div>
+    </div>
+  </div>
+</div>

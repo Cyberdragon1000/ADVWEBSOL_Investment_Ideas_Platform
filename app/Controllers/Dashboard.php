@@ -28,7 +28,7 @@ class Dashboard extends BaseController
 				return view('templates/header', $data) . view('dashboard_ig') . view('templates/footer');
 			  break;
 			default:
-				return redirect()->to('/');;
+				return redirect()->to('/');
 		  }
 
 		
