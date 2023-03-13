@@ -27,7 +27,7 @@
   </head>
   <body>
     <nav
-      class="navbar sticky-top navbar-expand-md mb-1"
+      class="navbar sticky-top navbar-expand-md mb-0"
       style="background-color: #009879"
     >
       <a class="navbar-brand" href="/">
