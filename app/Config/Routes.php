@@ -37,6 +37,9 @@ $routes->get('/logout', 'Users::logout');
 $routes->get('/migration','Migrate::index');
 $routes->get('/ideaform','Home::tempideaform');
 $routes->get('/investorform','Home::tempinvestorform');
+$routes->get('/api/getidea/(:num)','Dashboard::getidea/$1');
+$routes->get('/api/getinvestor/(:num)','Dashboard::getinvestor/$1');
+$routes->post('/sendidearm','Dashboard::sendidearm');
 
 /*
  * --------------------------------------------------------------------
