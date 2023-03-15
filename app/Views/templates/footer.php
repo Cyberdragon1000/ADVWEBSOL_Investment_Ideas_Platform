@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-0">
       <footer class="text-center text-white" style="background-color: #009879">
         <div class="container pt-1 g-0">
           <div class="row my-0 mx-1">

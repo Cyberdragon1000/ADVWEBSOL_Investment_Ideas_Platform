@@ -22,6 +22,9 @@ class Dashboard extends BaseController
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
 			  break;
 			case "C":
+				$model = new RMIdeas();
+				$data['ideas'] = $model->getapprovedideas(session('id'));
+				
 				return view('templates/header', $data) . view('dashboard_investor') . view('templates/footer');
 			  break;
 			case "IG":
@@ -32,6 +35,39 @@ class Dashboard extends BaseController
 		  }
 
 		
+	}
+
+	public function getidea($id)
+	{
+		$model= new RMideas();
+		$results = array(
+			"ideainfo" => $model->getselectedidea($id),
+			"investedinfo" => $model->getselectedideadecisions($id),
+			"notsentyet" => $model->getideanotsentlist($id)
+		  );
+		return json_encode($results);
+
+	}
+	
+	public function getinvestor($id)
+	{
+		$model= new RMinvestors();
+		$results = array(
+			"investorinfo" => $model->getselectedinvestor($id),
+			"investedinfo" => $model->getselectedinvestordecisions($id),
+		  );
+		return json_encode($results);
+
+	}
+
+	public function sendidearm()
+	{
+		$investorid=$this->request->getPost('rmsentidea');
+		$ideaid=$this->request->getPost('ideano');
+		$model= new RMideas();
+		$model->sendfordecision($ideaid,$investorid);
+		return redirect()->to('/dashboard');
+
 	}
 
 }
