@@ -48,4 +48,19 @@ class RMIdeas extends Model
             return $builder->insert($data);
         
     }
+
+    public function getapprovedideas($id) {
+        $builder = $this->db->table('ideas');
+        $builder->select('*');
+        $builder->where(' ideas.idea_number IN (SELECT idea_id FROM decision WHERE decision.decision = \'P\' AND decision.investor_id ='. $id . ')');
+        return $builder->get()->getResultArray();
+    }
+
+    public function getideasinvestedin($id) {
+        $builder = $this->db->table('ideas');
+        $builder->select('ideas.*,user_login.first_name');
+        $builder->where(' ideas.idea_number IN (SELECT idea_id FROM decision WHERE decision.investor_id = )'. $id );
+        $builder->join('user_login', 'user_login.id = ideas.author_id', 'inner');
+        return $builder->get()->getResultArray();
+    }
 }

@@ -22,6 +22,9 @@ class Dashboard extends BaseController
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
 			  break;
 			case "C":
+				$model = new RMIdeas();
+				$data['ideas'] = $model->getapprovedideas(session('id'));
+				
 				return view('templates/header', $data) . view('dashboard_investor') . view('templates/footer');
 			  break;
 			case "IG":
