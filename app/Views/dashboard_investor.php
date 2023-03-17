@@ -243,7 +243,6 @@ function accepted($d)
           </div>
           <hr>
 
-
           <div class="row">
             <div class="col-2 h6 mb-0 fw-bold">Content
             </div>
@@ -251,24 +250,16 @@ function accepted($d)
             </div>
           </div>
           <hr>
-
-
-
         </div>
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-success" type="submit" form="ideasendrm" name="choice" value="A">
-          Approve
-          <input type="hidden" name="investorid" value="3" />
-        </button>
-        <button class="btn btn-danger" type="submit" form="ideasendrm" name="choice" value="R">
-          Deny
-          <input type="hidden" name="investorid" value="3" />
-        </button>
+        <form action="/senddecision" method="post" id="ideasendrm">
+          <button class="btn btn-success" name="choice" value="A" type="submit">Approve</button>
+          <button class="btn btn-danger" name="choice" value="R" type="submit">Deny</button>
+          <input type="hidden" name="investorid" id="ideaattr" value="3" />
+        </form>
       </div>
     </div>
   </div>
-
-
 </div>
