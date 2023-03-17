@@ -80,16 +80,6 @@
     </div>
 
     <style>
-      body {
-        background-image: url("https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80");
-        background-color: #cccccc;
-        font-family: "Andika", sans-serif;
-      }
-      th:first-child,
-      td:first-child {
-        position: sticky;
-        left: 0px;
-      }
       thead,
       #unmovedtitle {
         background-color: #009879;

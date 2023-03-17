@@ -1,3 +1,43 @@
-body{
-    background-color: #e1e1e1;
+.dataTables_filter {
+  float: right;
 }
+.dataTables_length  {
+  float: left;
+}
+.dataTables_paginate {
+  text-align: center;
+  
+
+}
+
+
+.dataTables_paginate button{
+    font-size: 22px;
+    align-items: center;
+    
+border: none;
+}
+
+table.mytable tr.fixedhrows{
+    height: 10%;
+     }
+
+
+     body {
+        background-image: url("https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80");
+        background-color: #cccccc;
+        font-family: "Andika", sans-serif;
+      }
+      thead,
+      #unmovedtitle {
+        background-color: #009879;
+      }
+      .approval {
+        position: sticky;
+        right: 0px;
+      }
+      #decision {
+        background-color: #009879;
+      }
+
+      

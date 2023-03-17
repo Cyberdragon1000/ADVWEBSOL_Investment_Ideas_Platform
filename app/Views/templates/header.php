@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=Andika&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/css/style.css">
+    
 
 
 
@@ -33,11 +33,17 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <script src="/assets/js/reactitems.js" type="text/babel"></script> <!--babel for jsx support-->
+  <script src="/assets/js/jsitems.js" type="text/babel"></script> <!--babel for jsx support-->
 
 
 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
+  
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
+
+  <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body>
     <nav

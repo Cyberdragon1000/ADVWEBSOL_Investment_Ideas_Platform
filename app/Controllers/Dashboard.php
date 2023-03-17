@@ -14,8 +14,6 @@ class Dashboard extends BaseController
 
 		switch ($usertype) {
 			case "RM":
-				$model = new RMIdeas();
-        		$data['ideas'] = $model->getideasrm();
 				$model = new RMinvestors();
         		$data['investorprefs'] = $model->getinvestorsrm();
         		$data['decisions'] = $model->getinvestordecision();
@@ -69,5 +67,13 @@ class Dashboard extends BaseController
 		return redirect()->to('/dashboard');
 
 	}
+
+	public function getnewideaslistrm()
+	{
+		$model = new RMIdeas();
+        return json_encode($model->getideasrm());
+
+	}
+
 
 }
