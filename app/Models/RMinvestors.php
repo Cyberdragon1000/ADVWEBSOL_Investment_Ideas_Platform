@@ -35,4 +35,11 @@ class RMinvestors extends Model
         $builder->where('investor_id', $id);
         return $builder->get()->getResultArray();
     }
+    
+    public function sendfordecision($id,$choice) {
+        $builder = $this->db->table('decision');
+        $builder->set('decision', $choice);
+        $builder->where('investor_id', $id);
+        return $builder->update();
+    }
 }

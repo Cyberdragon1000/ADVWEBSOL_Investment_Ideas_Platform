@@ -40,6 +40,7 @@ $routes->get('/investorform','Home::tempinvestorform');
 $routes->get('/api/getidea/(:num)','Dashboard::getidea/$1');
 $routes->get('/api/getinvestor/(:num)','Dashboard::getinvestor/$1');
 $routes->post('/sendidearm','Dashboard::sendidearm');
+$routes->post('/senddecision','Dashboard::senddecision');
 $routes->get('/rmnewideas','Dashboard::getnewideaslistrm');
 
 /*
