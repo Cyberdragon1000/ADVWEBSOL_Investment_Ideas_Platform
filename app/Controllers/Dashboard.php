@@ -70,4 +70,14 @@ class Dashboard extends BaseController
 
 	}
 
+	public function senddecision()
+	{
+		$investorid=$this->request->getPost('investorid');
+		$choice=$this->request->getPost('choice');
+		$model= new RMinvestors();
+		$model->sendfordecision($investorid,$choice);
+		return redirect()->to('/dashboard');
+
+	}
+
 }
