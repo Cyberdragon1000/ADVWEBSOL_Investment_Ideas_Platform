@@ -38,7 +38,7 @@
       </thead>
       <tr onclick="location.href='./ideapage.html';">
         <?php foreach ($ideas as $idea) : ?>
-      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal(<?= $idea['idea_number'] ?>)" data-bs-target="#investoridealist">
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
         <td><?= $idea['title'] ?></td>
         <!-- <td  ><?= $idea['published_on']  ?></td> -->
@@ -128,7 +128,8 @@ function accepted($d)
 ?>
 
 <script>
-  function setideamodal(ideaid) {
+  function setideamodal1(ideaid) {
+    console.log("flag");
     fetch("api/getidea/" + ideaid, {
         method: "get",
         headers: {
@@ -138,6 +139,7 @@ function accepted($d)
       })
       .then((response) => {
         if (response.ok) {
+          console.log(response);
           return response.json(); // extract the JSON data from the response
         } else {
           console.log(response); //throw new Error('response was not ok');

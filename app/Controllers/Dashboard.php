@@ -14,9 +14,6 @@ class Dashboard extends BaseController
 
 		switch ($usertype) {
 			case "RM":
-				$model = new RMinvestors();
-        		$data['investorprefs'] = $model->getinvestorsrm();
-        		$data['decisions'] = $model->getinvestordecision();
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
 			  break;
 			case "C":
@@ -82,6 +79,20 @@ class Dashboard extends BaseController
 	{
 		$model = new RMIdeas();
         return json_encode($model->getideasrm());
+
+	}
+
+	public function getsentideaslistrm()
+	{
+		$model = new RMinvestors();
+        return json_encode($model->getinvestordecision());
+
+	}
+
+	public function getinvestorslistrm()
+	{
+		$model = new RMinvestors();
+        return json_encode($model->getinvestorsrm());
 
 	}
 

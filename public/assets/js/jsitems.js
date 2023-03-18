@@ -13,8 +13,6 @@ function setElementValue(stringa, stringb) {
 
 
 
-
-
 const rmdialoguboxes = ReactDOM.createRoot(document.getElementById('dialogboxes'));
 rmdialoguboxes.render(<div><Ideacontent/><Investorcontent/><Rmsendboxcontent/></div>);
 
@@ -62,7 +60,7 @@ return <button className="btn btn-danger" data-bs-dismiss="modal">Close</button>
 
   //-------idea modal---------
 function Ideacontent(props) {
-  return  <div class="modal fade" id="openidea" ><div className="modal-dialog modal-dialog-centered modal-lg" ><div className="modal-content">
+  return  <div className="modal fade" id="openidea" ><div className="modal-dialog modal-dialog-centered modal-lg" ><div className="modal-content">
             <div className="modal-header h5 fw-bold "><Onerowtitle idtitle="idmodaltitle"/><Closebuttonsymbol/></div>
             <div className="modal-body" ><div className="container-fluid">
               <Twocolrowholder leftrowhead="IdeaNumber" leftrowdata="ideanum"  rightrowhead="Author" rightrowdata="idauthor" />
@@ -91,7 +89,7 @@ function Ideacontent(props) {
  //-------investor modal---------
 function Investorcontent(props) {
 
-  return  <div class="modal fade" id="openinvestor" ><div className="modal-dialog modal-dialog-centered modal-lg" ><div className="modal-content">
+  return  <div className="modal fade" id="openinvestor" ><div className="modal-dialog modal-dialog-centered modal-lg" ><div className="modal-content">
             <div className="modal-header h5 fw-bold "><Onerowtitle idtitle="inmodaltitle"/><Closebuttonsymbol/></div>
             <Investorbody/>
             
@@ -121,35 +119,20 @@ function Investorbody(props) {
 
  //-------sending idea rm modal---------
 function Rmsendboxcontent(props) {
-  return  <div class="modal fade" id="sendidea" ><div className="modal-dialog modal-dialog-centered" ><div className="modal-content">
+  return  <div className="modal fade" id="sendidea" ><div className="modal-dialog modal-dialog-centered" ><div className="modal-content">
             <div className="modal-header h5 fw-bold "><Onerowtitle idmess="Sending this Idea to"/><Closebuttonsymbol/></div>
             <div className="modal-body" >
-            Sending the idea <div class="fw-bold" id="idmodaltitle2"></div> to <hr/>
+            Sending the idea <div className="fw-bold" id="idmodaltitle2"></div> to <hr/>
             <form action="/sendidearm" method="post" id="ideasendrm">
               <input type="hidden" name="ideano" id="ideaattr" value="someValue"/>
               <div id="notyetsenttolist"></div>
             </form>
           </div>
           
-          <div className="modal-footer" ><button class="btn btn-success" id="sendideabutton" type="submit" form="ideasendrm" value="submit" data-bs-dismiss="modal">Confirm</button>
-  <button class="btn btn-primary" data-bs-target="#openidea" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button></div>
+          <div className="modal-footer" ><button className="btn btn-success" id="sendideabutton" type="submit" form="ideasendrm" value="submit" data-bs-dismiss="modal">Confirm</button>
+  <button className="btn btn-primary" data-bs-target="#openidea" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button></div>
           </div></div></div>;
 }
-
-function togglelists(){
-  if (listtbtn[0].innerHTML == "Investor List") {
-    listtbtn[0].innerHTML = "Idea List";
-    ideastables[0].className = "container text-nowrap ideaspage d-none";
-    investorstable[0].className = "container text-nowrap investorspage";
-
-  } else {
-    listtbtn[0].innerHTML = "Investor List";
-    ideastables[0].className = "container text-nowrap ideaspage";
-    investorstable[0].className = "container text-nowrap investorspage d-none";
-  }
-  return;
-}
-
 
    
 function setideamodal(ideaid) {

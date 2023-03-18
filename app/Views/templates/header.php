@@ -94,20 +94,7 @@
           </li>
         </ul>
  
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
         
-        <button
-          class="btn btn-outline-light mx-1 my-1 listtoggle <?= (session()->get('user_type')=='RM' ) ? '' :'d-none' ?>"
-          onclick="togglelists()"
-        >Investor List</button>   
         <button
           class="btn btn-outline-light ms-1 <?= (session('user_type')) ? 'd-none' : '' ?>"
           onclick="location.href='/register';"
