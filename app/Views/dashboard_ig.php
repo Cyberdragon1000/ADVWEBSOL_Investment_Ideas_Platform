@@ -1,17 +1,18 @@
-<div class="container" style="background-color: white; ">
+<div class="container" 
   <div class="row">
     <div class="col-12">
       <h1>Hello, <?= session()->get('first_name') ?></h1>
     </div>
   </div>
 </div>
-<center> <h1>List of ideas</h1> </center> by emmanuel
+<center> <h1>List of ideas</h1> </center> BY EMMANUEL
             <style>
                 table, th, td {
                   border:1px solid black;
                 }
                 </style>
-                <table style="width:100%;border:1px solid black">
+                <table style="width:95%;border:1px solid black">
+      <thead>
                 <tr>
                     <th>Title</th>
                     <th>Abstract</th>
@@ -22,21 +23,27 @@
                     <th>Currency</th>
                     <th>Major Sector</th>
                     <th>Country</th>
+
                 </tr>
+
                 <tr onclick="location.href='./ideapage.html';">
                     <td>Idea A</td>
                     <td>Very good investment</td>
                     <td>Manufactural items</td>
-                    <td>prodsucts</td>
-                    <td>Food items</td>
-                    <td>Bonds</td>
-                    <td>Pounds</td>
-                    <td>Health</td>
+                    <td>27th of January 2023</td>
+                    <td>31st of March 2023S</td>
+                    <td>Building Materials</td>
+                    <td>Pound Sterling</td>
+                    <td>Residents of Cambridge Campus</td>
                     <td>UK</td>
                 </tr>
             </table>
-            <table style="width:100%;border:1px solid black">
+            <table style="width:95%;border:1px solid black">
                 <tr>
+                <div id="dialogboxes"></div>
+  <h1 class="text-center">List of ideas invested in</h1>
+      <thead>
+
                     <th>Title</th>
                     <th>Abstract</th>
                     <th>Risk Rating</th>
@@ -50,14 +57,13 @@
                 <tr onclick="location.href='./ideapage.html';">
                     <td>Idea A</td>
                     <td>Very good investment</td>
-                    <td>0</td>
-                    <td><button type="button" class="btn btn-secondary">Goods</button></td>
-                    <td><div class="btn-group" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-info">Food</button>
-  </div></td>
-                    <td>Bonds</td>
-                    <td>Pounds</td>
-                    <td>Health</td>
+                    <td>Milk</td>
+                    <td>20th March 2023</td>
+                    <td>31st March 2023</td>
+          
+                    <td>Beveragies</td>
+                    <td>Pound Sterling</td>
+                    <td>Anglia Ruskin University Main Campus Cambridge</td>
                     <td>UK</td>
                 </tr>
                 </table>
