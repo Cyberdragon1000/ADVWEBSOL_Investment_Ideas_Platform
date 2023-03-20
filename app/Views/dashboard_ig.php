@@ -67,7 +67,7 @@
                     <td>UK</td>
                 </tr>
                 </table>
-                <br><input type="button" onclick="location.href='./ideapage.html';" value="Give a new idea" />
+                <br><input type="button" onclick="location.href='/ideaform'" value="Give a new idea" />
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
   
