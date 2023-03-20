@@ -20,6 +20,13 @@ class RMinvestors extends Model
         return $builder->get()->getrow();
     }
 
+    public function getpreferences($investorid) {
+        $builder = $this->db->table('investorprefs');
+        $builder->select('*');
+        $builder->where('investor_id', $investorid);
+        return $builder->get()->getrow();
+    }
+
     public function getinvestordecision() {
         $builder = $this->db->table('decision');
         $builder->select('ideas.idea_number, ideas.title, ideas.abstract, ideas.expires_on, ideas.risk, investorprefs.name, decision.decision');

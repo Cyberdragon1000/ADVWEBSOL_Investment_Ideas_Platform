@@ -97,4 +97,13 @@ class Dashboard extends BaseController
 		$model = new RMinvestors();
 		return json_encode($model->getinvestorsrm());
 	}
+
+	public function getpreferencesinvestor($id)
+	{
+		$model = new RMinvestors();
+        return json_encode($model->getpreferences($id));
+
+	}
+
+
 }
