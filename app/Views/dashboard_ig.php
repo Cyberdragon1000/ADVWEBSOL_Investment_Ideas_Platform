@@ -26,9 +26,9 @@
                 <tr onclick="location.href='./ideapage.html';">
                     <td>Idea A</td>
                     <td>Very good investment</td>
-                    <td>0</td>
-                    <td>7/1/23</td>
-                    <td>7/1/24</td>
+                    <td>Manufactural items</td>
+                    <td>prodsucts</td>
+                    <td>Food items</td>
                     <td>Bonds</td>
                     <td>Pounds</td>
                     <td>Health</td>
@@ -65,11 +65,6 @@
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
   
-</div>
-
-}
-</script>
-
 <div class="modal fade" id="investoridealist">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
