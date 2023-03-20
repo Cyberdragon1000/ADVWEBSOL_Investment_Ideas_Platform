@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\RMIdeas;
 use App\Models\RMinvestors;
 
@@ -15,86 +16,85 @@ class Dashboard extends BaseController
 		switch ($usertype) {
 			case "RM":
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
-			  break;
+				break;
 			case "C":
 				$model = new RMIdeas();
-				$data['ideas'] = $model->getapprovedideas(session('id'));
-				
+				$data['newideas'] = $model->getrmsentideas(session('id'));
+				$model = new RMinvestors();
+				$data['appideas'] = $model->getapprovedideas(session('id'));
+
 				return view('templates/header', $data) . view('dashboard_investor') . view('templates/footer');
-			  break;
+				break;
 			case "IG":
 				return view('templates/header', $data) . view('dashboard_ig') . view('templates/footer');
-			  break;
+				break;
 			default:
 				return redirect()->to('/');
-		  }
-
-		
+		}
 	}
 
 	public function getidea($id)
 	{
-		$model= new RMideas();
+		$model = new RMideas();
 		$results = array(
 			"ideainfo" => $model->getselectedidea($id),
 			"investedinfo" => $model->getselectedideadecisions($id),
 			"notsentyet" => $model->getideanotsentlist($id)
-		  );
+		);
 		return json_encode($results);
-
 	}
-	
+
 	public function getinvestor($id)
 	{
-		$model= new RMinvestors();
+		$model = new RMinvestors();
 		$results = array(
 			"investorinfo" => $model->getselectedinvestor($id),
 			"investedinfo" => $model->getselectedinvestordecisions($id),
-		  );
+		);
 		return json_encode($results);
-
 	}
 
 	public function sendidearm()
 	{
-		$investorid=$this->request->getPost('rmsentidea');
-		$ideaid=$this->request->getPost('ideano');
-		$model= new RMideas();
-		$model->sendfordecision($ideaid,$investorid);
+		$investorid = $this->request->getPost('rmsentidea');
+		$ideaid = $this->request->getPost('ideano');
+		$model = new RMideas();
+		$model->sendfordecision($ideaid, $investorid);
 		return redirect()->to('/dashboard');
-
 	}
 
 	public function senddecision()
 	{
-		$investorid=$this->request->getPost('investorid');
-		$choice=$this->request->getPost('choice');
-		$model= new RMinvestors();
-		$model->sendfordecision($investorid,$choice);
-		return redirect()->to('/dashboard');
-
+		$investorid = $this->request->getPost('investorid');
+		$ideaid = $this->request->getPost('ideaid');
+		$choice = $this->request->getPost('choice');
+		if ($choice === 'A') {
+			$model = new RMinvestors();
+			$model->sendfordecision($investorid, $choice, $ideaid);
+			return redirect()->to('/dashboard');
+		}
+		else {
+			$model = new RMinvestors();
+			$model->sendfordelete($investorid, $ideaid);
+			return redirect()->to('/dashboard');
+		}
 	}
 
 	public function getnewideaslistrm()
 	{
 		$model = new RMIdeas();
-        return json_encode($model->getideasrm());
-
+		return json_encode($model->getideasrm());
 	}
 
 	public function getsentideaslistrm()
 	{
 		$model = new RMinvestors();
-        return json_encode($model->getinvestordecision());
-
+		return json_encode($model->getinvestordecision());
 	}
 
 	public function getinvestorslistrm()
 	{
 		$model = new RMinvestors();
-        return json_encode($model->getinvestorsrm());
-
+		return json_encode($model->getinvestorsrm());
 	}
-
-
 }

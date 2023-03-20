@@ -41,6 +41,7 @@ $routes->get('/api/getidea/(:num)','Dashboard::getidea/$1');
 $routes->get('/api/getinvestor/(:num)','Dashboard::getinvestor/$1');
 $routes->post('/sendidearm','Dashboard::sendidearm');
 $routes->post('/senddecision','Dashboard::senddecision');
+$routes->post('/senddecision','Dashboard::sendfordelete');
 $routes->get('/rmnewideas','Dashboard::getnewideaslistrm');
 $routes->get('/rmsentideas','Dashboard::getsentideaslistrm');
 $routes->get('/rminvestorslist','Dashboard::getinvestorslistrm');
