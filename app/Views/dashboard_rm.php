@@ -22,23 +22,17 @@
         
         <div class="container text-nowrap " >
           <h1 class="text-center">New Ideas</h1>
-          <table class="table table-hover table-bordered mb-0 " id="newideastable">
+          <table class="table table-hover mb-0 " id="newideastable">
             <thead >
               <tr class="text-center" >
                 <th  style="background-color: #009879;">No.</th>
+                <th>Risk</th>
+                <th>Publish Date</th>
+                <th>Expiry Date</th>
                 <th>Title</th>
                 <th>Abstract</th>
-                <th>Risk Rating</th>
-                <th>Published Date</th>
                 <th>Author's Name</th>
-                <th>Expiry Date</th>
-                <th>Product Type</th>
-                <th>Instruments</th>
-                <th>Currency</th>
-                <th>Major Sector</th>
-                <th>Minor Sector</th>
-                <th>Region</th>
-                <th style="background-color: #009879;">Country</th>
+                <th style="background-color: #009879;">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -50,16 +44,16 @@
       <div class="tab-pane fade" id="sendideastab" role="tabpanel" >
         <div class="container text-nowrap">
           <h1 class="text-center">Ideas Investment Status</h1>
-          <table class="table table-hover table-bordered mb-0" id="sentideastable">
+          <table class="table table-hover  mb-0" id="sentideastable">
             <thead>
             <tr class="text-center">
                 <th  style="background-color: #009879;">No.</th>
                 <th>Title</th>
-                <th>Abstract</th>
                 <th>Risk Rating</th>
+                <th>Investor Name</th>
                 <th>Expiry Date</th>
-                <th>Given Investor</th>
-                <th style="background-color: #009879;" >Decision</th>
+                <th style="background-color: #009879;">Decision</th>
+                <th style="background-color: #009879;" >Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -71,20 +65,19 @@
       <div class="tab-pane fade" id="investorspreferencestab" role="tabpanel" >
         <div class="container text-nowrap">
           <h1 class="text-center">Investors List</h1>
-          <table class="table table-hover table-bordered mb-0" id="investorslisttable">
+          <table class="table table-hover  mb-0" id="investorslisttable">
               <thead>
                 <tr class="text-center">
                   <th  style="background-color: #009879;">Name</th>
-                  <th>Key terms</th>
                   <th>Risk Rating</th>
+                  <th>Key terms</th>
                   <th>Expiry Date</th>
                   <th>Product Type</th>
                   <th>Instruments</th>
                   <th>Currency</th>
                   <th>Major Sector</th>
                   <th>Minor Sector</th>
-                  <th>Region</th>
-                  <th>Country</th>
+                  <th style="background-color: #009879;">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -102,7 +95,6 @@
 ideastableinit();
 function ideastableinit() {
   let table = new DataTable('#newideastable', {
-    pageLength: 1,
     scroller:    true,
     scrollX: true,
     scrollY: false,
@@ -112,7 +104,7 @@ function ideastableinit() {
           left: 1,
           right: 1
       },
-    "lengthMenu": [ [1, 5,10,20, 50, -1], [1, 5,10,20, 50, "All"] ],
+    "lengthMenu": [ [ 5,10,20, 50, -1], [ 5,10,20, 50, "All"] ],
     "language": {
           "paginate": {
                   "first": "<i class=\"bi bi-chevron-double-left\"></i>",
@@ -135,19 +127,21 @@ function ideastableinit() {
       
       "columns": [
         { "data": "idea_number" },
-        { "data": "title" },
         { "data": "risk" },
-        { "data": "abstract" },
         { "data": "published_on" },
         { "data": "expires_on" },
+        { "data": "title" },
+        { "data": "abstract" },
         { "data": "first_name" },
-        { "data": "product_type" },
-        { "data": "instruments" },
-        { "data": "currency" },
-        { "data": "major_sector" },
-        { "data": "minor_sector" },
-        { "data": "region" },
-        { "data": "country" }
+        { 
+          render: function ( data, type, row, meta) { 
+            if(type === 'display'){
+              return createactionbuttons(); 
+            }           
+          },  "defaultContent":"choices"//"country" }
+
+          
+        }
       ],
       "createdRow": (row, data, dataIndex) => {
             $(row).addClass(newideasrowcolor(data.published_on,data.expires_on));
@@ -162,7 +156,6 @@ function ideastableinit() {
 
 
   let table2 = new DataTable('#sentideastable', {
-    pageLength: 1,
     scroller:    true,
     scrollX: true,
     scrollY: false,
@@ -172,7 +165,7 @@ function ideastableinit() {
           left: 1,
           right: 2
       },
-    "lengthMenu": [ [1, 5,10,20, 50, -1], [1, 5,10,20, 50, "All"] ],
+    "lengthMenu": [ [ 5,10,20, 50, -1], [ 5,10,20, 50, "All"] ],
     "language": {
           "paginate": {
                   "first": "<i class=\"bi bi-chevron-double-left\"></i>",
@@ -196,10 +189,27 @@ function ideastableinit() {
         { "data": "idea_number" },
         { "data": "title" },
         { "data": "risk" },
-        { "data": "abstract" },
         { "data": "expires_on" },
         { "data": "name" },
-        { "data": "decision" }
+        { render: function ( data, type, row, meta) { 
+            if(type === 'display'){
+              if(row.decision=='R')
+              return "Rejected"; 
+              else if(row.decision=='P')
+              return "Pending"; 
+              else
+              return "Approved"
+            }           
+          },  "defaultContent":"pending"
+         },
+        { render: function ( data, type, row, meta) { 
+            if(type === 'display'){
+              return createactionbuttons(); 
+            }           
+          },  "defaultContent":"choices"//"country" 
+        }
+
+          
       ],
       "createdRow": (row, data, dataIndex) => {
             $(row).addClass(sentideasrowcolor(data.decision));
@@ -220,8 +230,7 @@ function ideastableinit() {
     pagingType: "full",
     pagingTag: 'button',
         fixedColumns: {
-          left: 1,
-          right: 1
+          left: 1,right:1
       },
     "lengthMenu": [ [1, 5,10,20, 50, -1], [1, 5,10,20, 50, "All"] ],
     "language": {
@@ -254,11 +263,14 @@ function ideastableinit() {
         { "data": "currency" },
         { "data": "major_sector" },
         { "data": "minor_sector" },
-        { "data": "region" },
-        { "data": "country" }
+        { render: function ( data, type, row, meta) { 
+            if(type === 'display'){
+              return `<button type="button" class="btn btn-info">View</button>`; 
+            }           
+          },  "defaultContent":"choices" }
       ],
       "createdRow": (row, data, dataIndex) => {
-            $(row).addClass("table-info");
+            $(row).addClass("border-3 border-bottom border-info");
             $(row).attr('data-bs-toggle', "modal");
             $(row).attr('data-bs-target', "#openinvestor");
             $(row).on('click', function() {
@@ -275,28 +287,37 @@ function newideasrowcolor(publisheddate,expirydate) {
   expdate.setMonth(expdate.getMonth() - 2);
   pubdate.setMonth(pubdate.getMonth() + 2);
   if (today>expdate) {
-    return "table-danger";
+    return "border-3 border-bottom border-danger";
   }
   else if(today>pubdate){
-    return "table-info";
+    return "border-3 border-bottom border-info";
 
   }
   else
-    return "table-success";
+    return "border-3 border-bottom border-success";
 
 }
 
 function sentideasrowcolor(decision) {
   if (decision=="R") {
-    return "table-danger";
+    return "border-3 border-bottom border-danger";
   }
   else if(decision=="P"){
-    return "table-info";
+    return "border-3 border-bottom border-info";
 
   }
   else
-    return "table-success";
+    return "border-3 border-bottom border-success";
 
+}
+function createactionbuttons() {
+  var data=`
+
+<div class="btn-group-sm" role="group" aria-label="Basic mixed styles example">
+  <button type="button" class="btn btn-info">View</button>
+  <button type="button" class="btn btn-danger">Remove</button>
+</div>`
+return data;
 }
 /*
 $( "#target" ).click(function() {
