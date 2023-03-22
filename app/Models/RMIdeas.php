@@ -49,7 +49,7 @@ class RMIdeas extends Model
         
     }
 
-    public function getapprovedideas($id) {
+    public function getrmsentideas($id) {
         $builder = $this->db->table('ideas');
         $builder->select('*');
         $builder->where(' ideas.idea_number IN (SELECT idea_id FROM decision WHERE decision.decision = \'P\' AND decision.investor_id ='. $id . ')');

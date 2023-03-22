@@ -20,6 +20,13 @@ class RMinvestors extends Model
         return $builder->get()->getrow();
     }
 
+    public function getpreferences($investorid) {
+        $builder = $this->db->table('investorprefs');
+        $builder->select('*');
+        $builder->where('investor_id', $investorid);
+        return $builder->get()->getrow();
+    }
+
     public function getinvestordecision() {
         $builder = $this->db->table('decision');
         $builder->select('ideas.idea_number, ideas.title, ideas.abstract, ideas.expires_on, ideas.risk, investorprefs.name, decision.decision');
@@ -36,10 +43,26 @@ class RMinvestors extends Model
         return $builder->get()->getResultArray();
     }
     
-    public function sendfordecision($id,$choice) {
+    public function sendfordecision($id,$choice,$idea) {
         $builder = $this->db->table('decision');
         $builder->set('decision', $choice);
         $builder->where('investor_id', $id);
+        $builder->where('idea_id', $idea);
         return $builder->update();
     }
+
+    public function sendfordelete($id,$idea) {
+        $builder = $this->db->table('decision');
+        $builder->where('investor_id', $id);
+        $builder->where('idea_id', $idea);
+        return $builder->delete();
+    }
+
+    public function getapprovedideas($id) {
+        $builder = $this->db->table('ideas');
+        $builder->select('*');
+        $builder->where(' ideas.idea_number IN (SELECT idea_id FROM decision WHERE decision.decision = \'A\' AND decision.investor_id ='. $id . ')');
+        return $builder->get()->getResultArray();
+    }
 }
+

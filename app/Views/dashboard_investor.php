@@ -21,37 +21,19 @@
     <table class="table table-hover table-bordered mb-0 mytable">
       <thead>
         <tr class="text-center">
-          <th id="unmovedtitle">Title</th>
+          <th id="unmovedtitle">Idea No.</th>
           <th>Abstract</th>
-          <!-- <th>Published Date</th> -->
-          <!-- <th>Expiry Date</th> -->
-          <!-- <th>Author</th> -->
-          <!-- <th>Content</th> -->
           <th>Risk Rating</th>
-          <!-- <th>Instruments</th> -->
           <th>Currency</th>
-          <!-- <th>Major Sector</th> -->
-          <!-- <th>Minor Sector</th> -->
-          <!-- <th>Region</th> -->
-          <!-- <th>Country</th> -->
         </tr>
       </thead>
       <tr onclick="location.href='./ideapage.html';">
-        <?php foreach ($ideas as $idea) : ?>
+        <?php foreach ($newideas as $idea) : ?>
       <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
         <td><?= $idea['title'] ?></td>
-        <!-- <td  ><?= $idea['published_on']  ?></td> -->
-        <!-- <td  ><?= $idea['expires_on']  ?></td> -->
-        <!-- <td  ><?= $idea['author_id']  ?></td> -->
-        <!-- <td  ><?= $idea['content']  ?></td> -->
         <td><?= $idea['risk']  ?></td>
-        <!-- <td  ><?= $idea['instruments']  ?></td> -->
         <td><?= $idea['currency']  ?></td>
-        <!-- <td  ><?= $idea['major_sector']  ?></td> -->
-        <!-- <td  ><?= $idea['minor_sector']  ?></td>          -->
-        <!-- <td  ><?= $idea['region']  ?></td> -->
-        <!-- <td  ><?= $idea['country']  ?></td> -->
       </tr>
     <?php endforeach; ?>
     </table>
@@ -81,18 +63,14 @@
         </tr>
       </thead>
       <tr onclick="location.href='./ideapage.html';">
-      <tr class="text-center table-success">
-        <td>Idea old</td>
-        <td>good investment</td>
-        <td>2</td>
-        <td>15/5/22</td>
-        <td>4/3/23</td>
-        <td>Bonds</td>
-        <td>Rupees</td>
-        <td>Sports</td>
-        <td>India</td>
-        <td>None</td>
+        <?php foreach ($appideas as $idea) : ?>
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
+        <td><?= $idea['idea_number'] ?></td>
+        <td><?= $idea['title'] ?></td>
+        <td><?= $idea['risk']  ?></td>
+        <td><?= $idea['currency']  ?></td>
       </tr>
+    <?php endforeach; ?>
     </table>
   </div>
 </div>
@@ -148,6 +126,7 @@ function accepted($d)
       .then((data) => {
         document.getElementById("ideatitleinv").innerHTML = data.ideainfo.title;
         document.getElementById("ideanuminv").innerHTML = data.ideainfo.idea_number;
+        document.getElementById("ideaid").value = data.ideainfo.idea_number;
         document.getElementById("ideauthorinv").innerHTML = data.ideainfo.first_name;
         document.getElementById("ideaabstractinv").innerHTML = data.ideainfo.abstract;
         document.getElementById("idpubinv").innerHTML = data.ideainfo.published_on;
@@ -259,9 +238,11 @@ function accepted($d)
         <form action="/senddecision" method="post" id="ideasendrm">
           <button class="btn btn-success" name="choice" value="A" type="submit">Approve</button>
           <button class="btn btn-danger" name="choice" value="R" type="submit">Deny</button>
-          <input type="hidden" name="investorid" id="ideaattr" value="3" />
+          <input type="hidden" name="investorid"  value="<?= session()->get('id') ?>" />
+          <input type="hidden" name="ideaid" id="ideaid" value="" />
         </form>
       </div>
     </div>
   </div>
 </div>
+

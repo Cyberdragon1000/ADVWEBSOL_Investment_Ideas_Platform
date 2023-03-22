@@ -37,11 +37,9 @@
 
 
 
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-  <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
-  
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
+  <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/fc-4.2.2/datatables.min.css" rel="stylesheet"/>
+ 
+<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/fc-4.2.2/datatables.min.js"></script>
 
   <link rel="stylesheet" href="/assets/css/style.css">
   </head>
