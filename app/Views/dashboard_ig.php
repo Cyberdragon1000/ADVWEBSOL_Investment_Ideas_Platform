@@ -1,6 +1,6 @@
 <div class="container" 
   <div class="row">
-    <div class="col-12">
+    <div class="col-15">
       <h1>Hello, <?= session()->get('first_name') ?></h1>
     </div>
   </div>
@@ -67,7 +67,8 @@
                     <td>UK</td>
                 </tr>
                 </table>
-                <br><input type="button" onclick="location.href='/ideaform'" value="Give a new idea" />
+                <br><input type="button"  class="btn btn-primary" onclick="location.href='/ideaform'" value="Give a new idea" 
+                <div class="col-4 text-secondary" id="idcountryinv">      
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
   
