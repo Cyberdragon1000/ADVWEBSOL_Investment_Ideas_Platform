@@ -5,73 +5,137 @@
     </div>
   </div>
 </div>
-<center> <h1>List of ideas</h1> </center> BY EMMANUEL
-            <style>
-                table, th, td {
-                  border:1px solid black;
-                }
-                </style>
-                <table style="width:95%;border:1px solid black">
+<input type="button"  class="btn btn-primary" onclick="location.href='/ideaform'" value="Give a new idea" >
+<div class="container text-nowrap ideaspage" style="background-color: white; ">
+  <h1 class="text-center">List of ideas</h1>
+  <div class="table-responsive rounded ">
+    <table class="table table-hover table-bordered mb-0 mytable">
       <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Abstract</th>
-                    <th>Risk Rating</th>
-                    <th>Published Date</th>
-                    <th>Expiry Date</th>
-                    <th>Product Type</th>
-                    <th>Currency</th>
-                    <th>Major Sector</th>
-                    <th>Country</th>
+        <tr class="text-center">
+          <th id="unmovedtitle">Idea No.</th>
+          <th>Abstract</th>
+          <th>Risk Rating</th>
+          <th>Currency</th>
+        </tr>
+      </thead>
+      <tr onclick="location.href='./ideapage.html';">
+        <?php foreach ($newideas as $idea) : ?>
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
+        <td><?= $idea['idea_number'] ?></td>
+        <td><?= $idea['title'] ?></td>
+        <td><?= $idea['risk']  ?></td>
+        <td><?= $idea['currency']  ?></td>
+      </tr>
+    <?php endforeach; ?>
+    </table>
+  </div>
+</div>
 
-                </tr>
 
-                <tr onclick="location.href='./ideapage.html';">
-                    <td>Idea A</td>
-                    <td>Very good investment</td>
-                    <td>Manufactural items</td>
-                    <td>27th of January 2023</td>
-                    <td>31st of March 2023S</td>
-                    <td>Building Materials</td>
-                    <td>Pound Sterling</td>
-                    <td>Residents of Cambridge Campus</td>
-                    <td>UK</td>
-                </tr>
-            </table>
-            <table style="width:95%;border:1px solid black">
-                <tr>
-                <div id="dialogboxes"></div>
+<hr>
+
+<div id="dialogboxes"></div>
+<div class="container text-nowrap ideaspage" style="background-color: white; ">
   <h1 class="text-center">List of ideas invested in</h1>
+  <div class="table-responsive rounded ">
+    <table class="table table-hover table-bordered mb-0 mytable">
       <thead>
+        <tr class="text-center">
+          <th>Title</th>
+          <th>Abstract</th>
+          <th>Risk Rating</th>
+          <th>Accepted Date</th>
+          <th>Expiry Date</th>
+          <th>Product Type</th>
+          <th>Currency</th>
+          <th>Major Sector</th>
+          <th>Country</th>
+          <th>Changes</th>
+        </tr>
+      </thead>
+      <tr onclick="location.href='./ideapage.html';">
+        <?php foreach ($appideas as $idea) : ?>
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
+        <td><?= $idea['idea_number'] ?></td>
+        <td><?= $idea['title'] ?></td>
+        <td><?= $idea['risk']  ?></td>
+        <td><?= $idea['currency']  ?></td>
+      </tr>
+    <?php endforeach; ?>
+    </table>
+  </div>
+</div>
 
-                    <th>Title</th>
-                    <th>Abstract</th>
-                    <th>Risk Rating</th>
-                    <th>Published Date</th>
-                    <th>Expiry Date</th>
-                    <th>Product Type</th>
-                    <th>Currency</th>
-                    <th>Major Sector</th>
-                    <th>Country</th>
-                </tr>
-                <tr onclick="location.href='./ideapage.html';">
-                    <td>Idea A</td>
-                    <td>Very good investment</td>
-                    <td>Milk</td>
-                    <td>20th March 2023</td>
-                    <td>31st March 2023</td>
-          
-                    <td>Beveragies</td>
-                    <td>Pound Sterling</td>
-                    <td>Anglia Ruskin University Main Campus Cambridge</td>
-                    <td>UK</td>
-                </tr>
-                </table>
-                <br><input type="button"  class="btn btn-primary" onclick="location.href='/ideaform'" value="Give a new idea" 
-                <div class="col-4 text-secondary" id="idcountryinv">      
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group me-2" role="group" aria-label="First group">
-  
+
+<?php
+function comparedates($ideaexp, $ideapub)
+{
+  $twomonthslater = new DateTime('+2 month');
+  $twomonthsago = new DateTime('-2 month');
+  $twomonthslaterString = $twomonthslater->format('Y-m-d H:i:s');
+  $twomonthsagoString = $twomonthsago->format('Y-m-d H:i:s');
+
+  if (strtotime($ideaexp) < strtotime($twomonthslaterString)) {
+    return 'table-danger';
+  } else if (strtotime($twomonthsagoString) < strtotime($ideapub)) {
+    return 'table-success';
+  } else {
+    return 'table-info';
+  }
+}
+
+function accepted($d)
+{
+  if ($d == 'R') {
+    return 'table-danger';
+  } else if ($d == 'A') {
+    return 'table-success';
+  } else {
+    return 'table-info';
+  }
+}
+?>
+
+<script>
+  function setideamodal1(ideaid) {
+    console.log("flag");
+    fetch("api/getidea/" + ideaid, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        }
+      })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          return response.json(); // extract the JSON data from the response
+        } else {
+          console.log(response); //throw new Error('response was not ok');
+        }
+      })
+      .then((data) => {
+        document.getElementById("ideatitleinv").innerHTML = data.ideainfo.title;
+        document.getElementById("ideanuminv").innerHTML = data.ideainfo.idea_number;
+        document.getElementById("ideauthorinv").innerHTML = data.ideainfo.first_name;
+        document.getElementById("ideaabstractinv").innerHTML = data.ideainfo.abstract;
+        document.getElementById("idpubinv").innerHTML = data.ideainfo.published_on;
+        document.getElementById("idexpyinv").innerHTML = data.ideainfo.expires_on;
+        document.getElementById("idriskinv").innerHTML = data.ideainfo.risk;
+        document.getElementById("idcurrinv").innerHTML = data.ideainfo.currency;
+        document.getElementById("idprotypeinv").innerHTML = data.ideainfo.product_type;
+        document.getElementById("idinstrumentinv").innerHTML = data.ideainfo.instruments;
+        document.getElementById("idmajsectorinv").innerHTML = data.ideainfo.major_sector;
+        document.getElementById("idminsectorinv").innerHTML = data.ideainfo.minor_sector;
+        document.getElementById("idregioninv").innerHTML = data.ideainfo.region;
+        document.getElementById("idcountryinv").innerHTML = data.ideainfo.country;
+        document.getElementById("idcontentinv").innerHTML = data.ideainfo.content;
+        console.log("flag", data.ideainfo.expires_on);
+      });
+
+  }
+</script>
+
 <div class="modal fade" id="investoridealist">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -161,12 +225,9 @@
       </div>
 
       <div class="modal-footer">
-        <form action="/senddecision" method="post" id="ideasendrm">
-          <button class="btn btn-success" name="choice" value="A" type="submit">Approve</button>
-          <button class="btn btn-danger" name="choice" value="R" type="submit">Deny</button>
-          <input type="hidden" name="investorid" id="ideaattr" value="3" />
-        </form>
+      <button class="btn btn-info" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
