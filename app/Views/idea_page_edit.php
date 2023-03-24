@@ -38,14 +38,14 @@
   </head>
   <body>
     <div class="container">
-      <form action="">
+      <form action="/newidea" method="post">
         <!-- section 1 -->
         <div class="h-100 d-flex justify-content-center">
           <div class="jumbotron">
             <label for="Title">Title</label>
             <div class="d-flex align-items-center">
               <input
-                type="text"
+                type="text" name="title"
                 class="form-control form-control_border"
                 placeholder="Idea Title"
                 aria-label="Idea Title"
@@ -59,7 +59,7 @@
             <label for="Abstract">Abstract</label>
             <textarea
               class="form-control"
-              id="briefDescription"
+              id="briefDescription" name="abs"
               placeholder="Brief description of the idea"
               rows="3"
             ></textarea>
@@ -68,19 +68,19 @@
         <!-- section 3 -->
         <div>
           <div class="row mb-4">
-            <div class="col">
-              <label for="Author">Author</label>
+          <div class="col">
+              <label for="Currency">Currency</label>
               <input
-                type="text"
-                class="form-control form-control_border"
-                placeholder="Abstract's Name"
-                aria-label="Abstract"
+                type="text" name="cur"
+                class="form-control form-control_border w-50"
+                placeholder="Enter the currency"
+                aria-label="Enter the currency"
               />
             </div>
             <div class="col">
               <label for="RiskRating">Risk Rating</label>
               <input
-                type="text"
+                type="text" name="risk"
                 class="form-control form-control_border"
                 placeholder="Risk"
                 aria-label="Risk"
@@ -93,7 +93,7 @@
             <div class="col">
               <label for="PublishedDate">Published Date</label>
               <input
-                type="date"
+                type="date" name="pd"
                 class="form-control"
                 placeholder="Published Dat"
                 aria-label="Published Date"
@@ -102,7 +102,7 @@
             <div class="col">
               <label for="ExpiryDate">Expiry Date</label>
               <input
-                type="date"
+                type="date" name="ed"
                 class="form-control"
                 placeholder="Expiry Date"
                 aria-label="Expiry Date"
@@ -114,7 +114,7 @@
           <div class="form-group mb-4">
             <label for="Content">Content</label>
             <textarea
-              class="form-control"
+              class="form-control" name="cont"
               id="detailed_description"
               placeholder="Detailed description of the idea."
               rows="3"
@@ -124,22 +124,9 @@
         <div>
           <div class="row mb-4">
             <div class="col">
-              <label for="Currency">Currency</label>
-              <input
-                type="text"
-                class="form-control form-control_border w-50"
-                placeholder="Enter the currency"
-                aria-label="Enter the currency"
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="row mb-4">
-            <div class="col">
               <label for="Instruments">Instruments</label>
               <input
-                type="text"
+                type="text" name="int"
                 class="form-control form-control_border"
                 placeholder="Enter the Instruments"
                 aria-label="Enter the Instruments"
@@ -148,7 +135,7 @@
             <div class="col">
               <label for="ProductType">Product Type</label>
               <input
-                type="text"
+                type="text" name="pt"
                 class="form-control form-control_border"
                 placeholder="Enter the Product Type"
                 aria-label="Enter the Product Type"
@@ -161,7 +148,7 @@
             <div class="col">
               <label for="MajorSector">Major Sector</label>
               <input
-                type="text"
+                type="text" name="maj"
                 class="form-control form-control_border"
                 placeholder="Enter the Major Sector"
                 aria-label="Enter the Major Sector"
@@ -170,7 +157,7 @@
             <div class="col">
               <label for="MinorSector">Minor Sector</label>
               <input
-                type="text"
+                type="text" name="min"
                 class="form-control form-control_border"
                 placeholder="Enter the Minor Sector"
                 aria-label="Enter the Minor Sector"
@@ -183,7 +170,7 @@
             <div class="col">
               <label for="Region">Region</label>
               <input
-                type="text"
+                type="text" name="reg"
                 class="form-control form-control_border"
                 placeholder="Enter the Region"
                 aria-label="Enter the Region"
@@ -192,7 +179,7 @@
             <div class="col">
               <label for="Country">Country</label>
               <input
-                type="text"
+                type="text" name="con"
                 class="form-control form-control_border"
                 placeholder="Enter the Country"
                 aria-label="Enter the Country"
@@ -200,6 +187,9 @@
             </div>
           </div>
         </div>
+        <input
+                value=<?= session('id') ?> type="hidden" name="auth"
+                />
         <div class="d-flex justify-content-center">
           <button type="submit" class="btn btn-primary align-items-center">
             Submit

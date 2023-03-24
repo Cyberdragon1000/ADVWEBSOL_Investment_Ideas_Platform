@@ -43,14 +43,14 @@
 
   <body>
     <div class="container mb-4">
-      <form action="" class="mb-4">
+      <form action="/prefup" method="post" class="mb-4">
         <!-- section 1 -->
         <div class="w-50 mb-4">
           <div class="jumbotron">
             <label for="Name">Name</label>
             <div class="d-flex align-items-center">
               <input
-                type="text"
+                type="text" name="a" value=""
                 class="form-control form-control_border"
                 placeholder="Investor Name"
                 aria-label="Investor Name"
@@ -65,7 +65,7 @@
             <div class="col">
               <label for="Expiry Date">Expiry date</label>
               <input
-                type="date"
+                type="date" name="b" value=""
                 class="form-control"
                 placeholder="Expiry date"
                 aria-label="Expiry date"
@@ -74,7 +74,7 @@
             <div class="col">
               <label for="RiskRating">Risk Rating</label>
               <input
-                type="text"
+                type="text" name="c" value=""
                 class="form-control form-control_border"
                 placeholder="Risk"
                 aria-label="Risk"
@@ -87,7 +87,7 @@
           <div class="form-group mb-4">
             <label for="Key words">Key words</label>
             <textarea
-              class="form-control w-50"
+              class="form-control w-50" name="d" value=""
               id="brief_interests"
               placeholder="Brief interests"
               rows="3"
@@ -100,7 +100,7 @@
             <div class="col">
               <label for="Instruments">Instruments</label>
               <input
-                type="text"
+                type="text" name="e" value=""
                 class="form-control form-control_border"
                 placeholder="Instruments"
                 aria-label="  Instruments"
@@ -109,7 +109,7 @@
             <div class="col">
               <label for="ProductType">Product Type</label>
               <input
-                type="text"
+                type="text" name="f" value=""
                 class="form-control form-control_border"
                 placeholder="Product Type"
                 aria-label="  Product Type"
@@ -122,7 +122,7 @@
           <div class="form-group mb-4">
             <label for="Key words">Detailed Profile</label>
             <textarea
-              class="form-control w-50"
+              class="form-control w-50" name="g" value=""
               id="detailed_preferences"
               placeholder="Detailed preferences"
               rows="3"
@@ -135,7 +135,7 @@
             <div class="col">
               <label for="Currency">Currency</label>
               <input
-                type="text"
+                type="text" name="h" value=""
                 class="form-control form-control_border w-50"
                 placeholder="Currency"
                 aria-label="Currency"
@@ -149,7 +149,7 @@
             <div class="col">
               <label for="MajorSector">Major Sector</label>
               <input
-                type="text"
+                type="text" name="i" value=""
                 class="form-control form-control_border"
                 placeholder="Author's Name"
                 aria-label="Author's Name"
@@ -158,7 +158,7 @@
             <div class="col">
               <label for="MinorSector">Minor Sector</label>
               <input
-                type="text"
+                type="text" name="j" value=""
                 class="form-control form-control_border"
                 placeholder="Author's Name"
                 aria-label="Author's Name"
@@ -172,7 +172,7 @@
             <div class="col">
               <label for="Region">Region</label>
               <input
-                type="text"
+                type="text" name="k" value=""
                 class="form-control form-control_border"
                 placeholder="Region"
                 aria-label="  Region"
@@ -181,7 +181,7 @@
             <div class="col">
               <label for="Country">Country</label>
               <input
-                type="text"
+                type="text" name="l" value=""
                 class="form-control form-control_border"
                 placeholder="Country"
                 aria-label="  Country"
@@ -189,6 +189,9 @@
             </div>
           </div>
         </div>
+        <input
+                value=<?= session('id') ?> type="hidden" name="auth"
+                />
         <div class="d-flex justify-content-center">
           <button type="submit" class="btn btn-primary align-items-center">
             Save
