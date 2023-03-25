@@ -26,6 +26,10 @@ class Dashboard extends BaseController
 				return view('templates/header', $data) . view('dashboard_investor') . view('templates/footer');
 				break;
 			case "IG":
+				$model = new RMIdeas();
+				$data['newideas'] = $model->getmyideas(session('id'));
+				$model = new RMinvestors();
+				$data['appideas'] = $model->getmyapprovedideas(session('id'));
 				return view('templates/header', $data) . view('dashboard_ig') . view('templates/footer');
 				break;
 			default:
@@ -105,5 +109,51 @@ class Dashboard extends BaseController
 
 	}
 
+	public function deleteidea(){
+		$ideaid = $this->request->getPost('ideadel');
+		$model = new RMinvestors();
+		$model->ideadelete($ideaid);
+			return redirect()->to('/dashboard');
+	}
 
+	public function addidea(){
+		$model = new RMinvestors();
+		$model->ideaenter(
+			$this->request->getPost('title'),
+			$this->request->getPost('abs'),
+			$this->request->getPost('auth'),
+			$this->request->getPost('risk'),
+			$this->request->getPost('pd'),
+			$this->request->getPost('ed'),
+			$this->request->getPost('cont'),
+			$this->request->getPost('cur'),
+			$this->request->getPost('int'),
+			$this->request->getPost('pt'),
+			$this->request->getPost('maj'),
+			$this->request->getPost('min'),
+			$this->request->getPost('reg'),
+			$this->request->getPost('con')
+		);
+			return redirect()->to('/dashboard');
+	}
+
+	public function prefup(){
+		$model = new RMinvestors();
+		$model->prefupdate(
+			$this->request->getPost('auth'),
+			$this->request->getPost('a'),
+			$this->request->getPost('b'),
+			$this->request->getPost('c'),
+			$this->request->getPost('d'),
+			$this->request->getPost('e'),
+			$this->request->getPost('f'),
+			$this->request->getPost('g'),
+			$this->request->getPost('h'),
+			$this->request->getPost('i'),
+			$this->request->getPost('j'),
+			$this->request->getPost('k'),
+			$this->request->getPost('l')
+		);
+		return redirect()->to('/dashboard');
+	}
 }
