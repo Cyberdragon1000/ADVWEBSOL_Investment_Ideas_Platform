@@ -56,6 +56,13 @@ class RMIdeas extends Model
         return $builder->get()->getResultArray();
     }
 
+    public function getmyideas($id) {
+        $builder = $this->db->table('ideas');
+        $builder->select('*');
+        $builder->where('author_id', $id);
+        return $builder->get()->getResultArray();
+    }
+
     public function getideasinvestedin($id) {
         $builder = $this->db->table('ideas');
         $builder->select('ideas.*,user_login.first_name');

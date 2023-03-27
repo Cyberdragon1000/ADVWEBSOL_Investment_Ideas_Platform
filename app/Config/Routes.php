@@ -45,6 +45,9 @@ $routes->post('/senddecision','Dashboard::sendfordelete');
 $routes->get('/rmnewideas','Dashboard::getnewideaslistrm');
 $routes->get('/rmsentideas','Dashboard::getsentideaslistrm');
 $routes->get('/rminvestorslist','Dashboard::getinvestorslistrm');
+$routes->post('/newidea','Dashboard::addidea');
+$routes->post('/delidea','Dashboard::deleteidea');
+$routes->post('/prefup','Dashboard::prefup');
 
 
 /*
