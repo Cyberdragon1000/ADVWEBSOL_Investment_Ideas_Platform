@@ -35,7 +35,7 @@ $routes->match(['get','post'],'/register', 'Users::register');
 $routes->match(['get','post'],'/dashboard', 'Dashboard::index');
 $routes->get('/logout', 'Users::logout');
 $routes->get('/migration','Migrate::index');
-$routes->get('/ideaform','Home::tempideaform');
+$routes->get('/ideaform/(:num)','Home::tempideaform/$1');
 $routes->get('/investorform','Home::tempinvestorform');
 $routes->get('/api/getidea/(:num)','Dashboard::getidea/$1');
 $routes->get('/api/getinvestor/(:num)','Dashboard::getinvestor/$1');
@@ -47,6 +47,7 @@ $routes->get('/rmsentideas','Dashboard::getsentideaslistrm');
 $routes->get('/rminvestorslist','Dashboard::getinvestorslistrm');
 $routes->post('/newidea','Dashboard::addidea');
 $routes->post('/delidea','Dashboard::deleteidea');
+$routes->post('/rejectidea','Dashboard::rejectidea');
 $routes->post('/prefup','Dashboard::prefup');
 
 

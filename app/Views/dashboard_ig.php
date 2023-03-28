@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-15">
       <h1>Hello, <?= session()->get('first_name') ?></h1>
+      <a role="button"  class="btn btn-primary" href="/ideaform/0"  >New Idea</a>
     </div>
   </div>
 </div>
-<input type="button"  class="btn btn-primary" onclick="location.href='/ideaform'" value="Give a new idea" >
+
 <div class="container text-nowrap ideaspage" style="background-color: white; ">
   <h1 class="text-center">List of ideas</h1>
   <div class="table-responsive rounded ">
@@ -15,49 +16,26 @@
           <th id="unmovedtitle">Idea No.</th>
           <th>Abstract</th>
           <th>Risk Rating</th>
-          <th>Currency</th>
+          <th>Approval status</th>
         </tr>
       </thead>
-      <tr onclick="location.href='./ideapage.html';">
         <?php foreach ($newideas as $idea) : ?>
       <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
         <td><?= $idea['title'] ?></td>
         <td><?= $idea['risk']  ?></td>
-        <td><?= $idea['currency']  ?></td>
+        <td><?= $idea['approval']  ?></td>
       </tr>
     <?php endforeach; ?>
     </table>
   </div>
 </div>
 
-<<<<<<< HEAD
-                </tr>
-<div style="background-color: white;">
-                <tr class="table-info" onclick="location.href='./ideapage.html';">
-                    <td>Idea A</td>
-                    <td>Very good investment</td>
-                    <td>Manufactural items</td>
-                    <td>27th of January 2023</td>
-                    <td>31st of March 2023S</td>
-                    <td>Building Materials</td>
-                    <td>Pound Sterling</td>
-                    <td>Residents of Cambridge Campus</td>
-                    <td>UK</td>
-                </tr>
-              
-            </table>
-          </div>
-            <table style="width:95%;border:1px solid black">
-                <tr>
-                <div id="dialogboxes"></div>
-=======
 
 <hr>
 
 <div id="dialogboxes"></div>
 <div class="container text-nowrap ideaspage" style="background-color: white; ">
->>>>>>> d8e3c0d21fb05000abb59c88261ed38b8e54892f
   <h1 class="text-center">List of ideas invested in</h1>
   <div class="table-responsive rounded ">
     <table class="table table-hover table-bordered mb-0 mytable">
@@ -75,7 +53,6 @@
           <th>Changes</th>
         </tr>
       </thead>
-      <tr onclick="location.href='./ideapage.html';">
         <?php foreach ($appideas as $idea) : ?>
       <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
@@ -83,7 +60,7 @@
         <td><?= $idea['risk']  ?></td>
         <td><?= $idea['currency']  ?></td>
       </tr>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
     </table>
   </div>
 </div>
@@ -139,6 +116,8 @@ function accepted($d)
       .then((data) => {
         document.getElementById("ideatitleinv").innerHTML = data.ideainfo.title;
         document.getElementById("ideanuminv").innerHTML = data.ideainfo.idea_number;
+        document.getElementById("ideanuminv2").value = data.ideainfo.idea_number;
+        document.getElementById("ideanuminv3").setAttribute('href', '/ideaform/'+data.ideainfo.idea_number);
         document.getElementById("ideauthorinv").innerHTML = data.ideainfo.first_name;
         document.getElementById("ideaabstractinv").innerHTML = data.ideainfo.abstract;
         document.getElementById("idpubinv").innerHTML = data.ideainfo.published_on;
@@ -158,35 +137,6 @@ function accepted($d)
   }
 </script>
 
-<<<<<<< HEAD
-                    <th>Title</th>
-                    <th>Abstract</th>
-                    <th>Risk Rating</th>
-                    <th>Published Date</th>
-                    <th>Expiry Date</th>
-                    <th>Product Type</th>
-                    <th>Currency</th>
-                    <th>Major Sector</th>
-                    <th>Country</th>
-                </tr>
-                <tr onclick="location.href='./ideapage.html';">
-                    <td>Idea A</td>
-                    <td>Very good investment</td>
-                    <td>Milk</td>
-                    <td>20th March 2023</td>
-                    <td>31st March 2023</td>
-          
-                    <td>Beveragies</td>
-                    <td>Pound Sterling</td>
-                    <td>Anglia Ruskin University Main Campus Cambridge</td>
-                    <td>UK</td>
-                </tr>
-                </table>
-                <br><input type="button"  class="btn btn-primary" onclick="location.href='/ideaform'" value="Give a new idea" 
-                <div class="col-4 text-secondary" id="idcountryinv">      
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  
-=======
 <div class="modal fade" id="investoridealist">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -276,10 +226,14 @@ function accepted($d)
       </div>
 
       <div class="modal-footer">
+      <a class="btn btn-warning" id="ideanuminv3">Update</a>
+      <form action="/delidea" method="post">
+        <input type="hidden" name="ideadel" id="ideanuminv2"  value="someValue">
+        <button class="btn btn-danger" type="submit"  data-bs-dismiss="modal">Delete</button>
+        </form>
       <button class="btn btn-info" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
->>>>>>> d8e3c0d21fb05000abb59c88261ed38b8e54892f
