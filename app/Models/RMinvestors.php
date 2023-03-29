@@ -51,6 +51,7 @@ class RMinvestors extends Model
         return $builder->update();
     }
 
+//not necessary now that we've changed it so that rm drops
     public function sendfordelete($id,$idea) {
         $builder = $this->db->table('decision');
         $builder->where('investor_id', $id);

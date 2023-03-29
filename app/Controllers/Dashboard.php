@@ -79,7 +79,7 @@ class Dashboard extends BaseController
 		}
 		else {
 			$model = new RMinvestors();
-			$model->sendfordelete($investorid, $ideaid);
+			$model->sendfordecision($investorid, $choice, $ideaid);
 			return redirect()->to('/dashboard');
 		}
 	}
