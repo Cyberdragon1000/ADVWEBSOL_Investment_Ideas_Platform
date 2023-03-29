@@ -26,11 +26,12 @@ class Home extends BaseController
         //return view('welcome_message');
     }
 
-    public function tempideaform()
+    public function tempideaform($id)
     {
         $page='ideaform';
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
+        $data['ideaid'] = $id;
 
         return view('templates/header', $data)
             . view('idea_page_edit')

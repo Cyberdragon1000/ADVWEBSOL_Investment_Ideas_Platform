@@ -39,6 +39,7 @@
   <body>
     <div class="container">
       <form action="/newidea" method="post">
+      <input type="hidden"  name="ideaid" id="ideaid"  value="<?= $ideaid?>">
         <!-- section 1 -->
         <div class="h-100 d-flex justify-content-center">
           <div class="jumbotron">

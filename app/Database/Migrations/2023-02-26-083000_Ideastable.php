@@ -111,6 +111,13 @@ class Ideastable extends Migration
                 'null' => FALSE,
                 'comment' => 'country' ,
             ],
+            'approval' => [
+                'type'           => 'ENUM("R","NR")',
+                'default' => 'NR',
+                'collation' => 'utf8mb4_general_ci',
+                'null' => FALSE,
+                'comment' => 'rejection status' ,
+            ]
             
             
             

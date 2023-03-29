@@ -10,6 +10,7 @@ class RMIdeas extends Model
         $builder = $this->db->table('ideas');
         $builder->select('ideas.*,user_login.first_name');
         $builder->where(' ideas.idea_number NOT IN (SELECT idea_id FROM decision)');
+        $builder->where(' ideas.approval !="R"');
         $builder->join('user_login', 'user_login.id = ideas.author_id', 'inner');
         return $builder->get()->getResultArray();
     }

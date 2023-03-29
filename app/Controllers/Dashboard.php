@@ -115,6 +115,11 @@ class Dashboard extends BaseController
 		$model->ideadelete($ideaid);
 			return redirect()->to('/dashboard');
 	}
+	public function rejectidea(){
+		$model = new RMinvestors();
+		$model->rmreject($this->request->getPost('id'));
+			return redirect()->to('/dashboard');
+	}
 
 	public function addidea(){
 		$model = new RMinvestors();
@@ -132,7 +137,8 @@ class Dashboard extends BaseController
 			$this->request->getPost('maj'),
 			$this->request->getPost('min'),
 			$this->request->getPost('reg'),
-			$this->request->getPost('con')
+			$this->request->getPost('con'),
+			($this->request->getPost('ideaid')=='0')?'':$this->request->getPost('ideaid')
 		);
 			return redirect()->to('/dashboard');
 	}

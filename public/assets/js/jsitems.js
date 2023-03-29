@@ -74,7 +74,7 @@ function setideamodal(ideaid) {
        setElementInnerHTML("idregion",data.ideainfo.region);
        setElementInnerHTML("idcountry",data.ideainfo.country);
        setElementInnerHTML("idcontent",data.ideainfo.content);
-       setElementValue("ideadel",data.ideainfo.idea_number);
+       setElementValue("rejectidea",data.ideainfo.idea_number);
 
        
        let sento= "<hr>No one yet";
@@ -433,9 +433,9 @@ function initpopups() {
       
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#sendidea" data-bs-toggle="modal" data-bs-dismiss="modal">Send to</button>
-        <form action="/delidea" method="post">
-        <input type="hidden" name="ideadel" id="ideadel"  value="someValue">
-        <button class="btn btn-danger" type="submit"  data-bs-dismiss="modal">Delete</button>
+        <form action="/rejectidea" method="post">
+        <input type="hidden" name="id" id="rejectidea"  value="someValue">
+        <button class="btn btn-danger" type="submit"  data-bs-dismiss="modal">Reject</button>
         </form>
         <button class="btn btn-info" data-bs-dismiss="modal">Close</button>
       </div>
