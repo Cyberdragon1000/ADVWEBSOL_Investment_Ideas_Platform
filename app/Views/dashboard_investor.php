@@ -35,7 +35,7 @@ function accepted($d)
   </div>
 </div>
 <div id="popupmodals"></div>
-<div class="container-fluid text-nowrap " style="">
+<div class="container-fluid text-nowrap " style="min-height: 30em;">
   <div class="row">
     <div class="d-flex align-items-center col-2" style="background-color: white; ">
       <div class="nav flex-column nav-pills" role="tablist" style="flex-grow:1;">
@@ -67,7 +67,7 @@ function accepted($d)
                   <td><?= $idea['title'] ?></td>
                   <td><?= $idea['risk']  ?></td>
                   <td><?= $idea['currency']  ?></td>
-                  <td><button data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); data-bs-target="#investoridealist">View</button></td>
+                  <td><button data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>);" data-bs-target="#investoridealist">View</button></td>
                   </td>
                 </tr>
               <?php endforeach; ?>
@@ -250,8 +250,8 @@ function accepted($d)
           else{
             document.getElementById("choices").innerHTML =
            `<form action="/senddecision" method="post" id="ideasendrm">
-                <button class="btn btn-success" name="choice" value="A" type="submit">Approve</button>
-                <button class="btn btn-danger" name="choice" value="R" type="submit">Deny</button>
+                <button class="btn btn-success" name="choice" value="A" type="submit">Invest</button>
+                <button class="btn btn-danger" name="choice" value="R" type="submit">Reject Investment</button>
                 <input type="hidden" name="investorid" value="<?= session()->get('id') ?>" />
                 <input type="hidden" name="ideaid" value="${data.ideainfo.idea_number}" />
                 
