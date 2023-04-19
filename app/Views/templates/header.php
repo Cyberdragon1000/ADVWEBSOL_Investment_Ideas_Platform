@@ -68,7 +68,7 @@
             <a class="nav-link active" href="/">Home</a>
           </li>
           <li class="nav-item mx-1 my-1 ">
-            <a class="nav-link" href="#">stuff</a>
+            <a class="nav-link" href="/faq">FAQ</a>
           </li>
           <li class="nav-item dropdown mx-1 my-1 ">
             <a
@@ -79,13 +79,23 @@
               >About us</a
             >
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">contact us</a>
-              <a class="dropdown-item" href="#">who we are</a>
+              <p class="dropdown-item" href="#" >
+                We help you find the best ideas to invest in. We connect people
+                with ideas with those who can fund them.
+              </p>
             </div>
           </li>
         </ul>
  
         
+        <a role="button"
+          class="btn btn-outline-light mx-1 <?= (session('user_type')=='IG') ? '': 'd-none' ?>"
+          href="/ideaform/0" 
+        >New Idea</a>
+        <a role="button"
+          class="btn btn-outline-light mx-1 <?= (session('user_type')=='C') ? '': 'd-none' ?>"
+          href="/investorform" 
+        >Change Preferences</a>
         <button
           class="btn btn-outline-light ms-1 <?= (session('user_type')) ? 'd-none' : '' ?>"
           onclick="location.href='/register';"
@@ -179,7 +189,6 @@
     </div>
 
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Edit Profile</button>
       </div>
     </div>
   </div>

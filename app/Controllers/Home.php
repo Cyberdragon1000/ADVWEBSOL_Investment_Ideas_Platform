@@ -46,6 +46,16 @@ class Home extends BaseController
             . view('investor_profile_page')
             . view('templates/footer');
     }
+    public function faq()
+    {
+        $page='faq';
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        return view('templates/header', $data)
+            . view('FAQ/index.php')
+            . view('templates/footer');
+    }
 
         
 }

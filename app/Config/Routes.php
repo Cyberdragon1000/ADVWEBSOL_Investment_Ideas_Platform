@@ -49,6 +49,7 @@ $routes->post('/newidea','Dashboard::addidea');
 $routes->post('/delidea','Dashboard::deleteidea');
 $routes->post('/rejectidea','Dashboard::rejectidea');
 $routes->post('/prefup','Dashboard::prefup');
+$routes->get('/faq','Home::faq');
 
 
 /*
