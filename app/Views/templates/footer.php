@@ -1,4 +1,3 @@
-<div class="mb-5"></div>
 <div class="mt-0">
       <footer class="text-center text-white" style="background-color: #009879">
         <div class="container pt-1 g-0">
@@ -17,9 +16,6 @@
                 <li>
                   <a href="/" class="text-white">Home</a>
                 </li>
-                <li>
-                  <a href="#" class="text-white">Some stuff</a>
-                </li>
               </ul>
             </div>
             <span class="col-1"></span>
@@ -28,26 +24,11 @@
 
               <ul class="mb-0">
                 <li>
-                  <a href="#" class="text-white">FAQ</a>
-                </li>
-                <li>
-                  <a href="#" class="text-white">Help</a>
+                  <a href="/faq" class="text-white">FAQ</a>
                 </li>
               </ul>
             </div>
             <span class="col-1"></span>
-            <div class="col-2">
-              <p class="h5">About us</p>
-
-              <ul class="mb-0">
-                <li>
-                  <a href="#" class="text-white">contact</a>
-                </li>
-                <li>
-                  <a href="#" class="text-white">who we are</a>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <hr class="hr-light m-0 g-0" style="opacity: 0.75" />

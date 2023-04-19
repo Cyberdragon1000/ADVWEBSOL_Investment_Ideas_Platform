@@ -1,26 +1,25 @@
-<div class="container" 
+<div class="container"> 
   <div class="row">
     <div class="col-15">
       <h1>Hello, <?= session()->get('first_name') ?></h1>
-      <a role="button"  class="btn btn-primary" href="/ideaform/0"  >New Idea</a>
     </div>
   </div>
 </div>
 
 <div class="container text-nowrap ideaspage" style="background-color: white; ">
-  <h1 class="text-center">List of ideas</h1>
+  <h1 class="text-center">Ideas Made</h1>
   <div class="table-responsive rounded ">
     <table class="table table-hover table-bordered mb-0 mytable">
       <thead>
         <tr class="text-center">
           <th id="unmovedtitle">Idea No.</th>
-          <th>Abstract</th>
+          <th>Title</th>
           <th>Risk Rating</th>
           <th>Approval status</th>
         </tr>
       </thead>
         <?php foreach ($newideas as $idea) : ?>
-      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>)" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
         <td><?= $idea['title'] ?></td>
         <td><?= $idea['risk']  ?></td>
@@ -36,29 +35,23 @@
 
 <div id="dialogboxes"></div>
 <div class="container text-nowrap ideaspage" style="background-color: white; ">
-  <h1 class="text-center">List of ideas invested in</h1>
+  <h1 class="text-center">Investments</h1>
   <div class="table-responsive rounded ">
     <table class="table table-hover table-bordered mb-0 mytable">
       <thead>
         <tr class="text-center">
+          <th>No.</th>
           <th>Title</th>
-          <th>Abstract</th>
           <th>Risk Rating</th>
-          <th>Accepted Date</th>
-          <th>Expiry Date</th>
-          <th>Product Type</th>
-          <th>Currency</th>
           <th>Major Sector</th>
-          <th>Country</th>
-          <th>Changes</th>
         </tr>
       </thead>
         <?php foreach ($appideas as $idea) : ?>
-      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>); console.log('flag')" data-bs-target="#investoridealist">
+      <tr class="fixedhrows <?= comparedates($idea['expires_on'], $idea['published_on'])  ?>" data-bs-toggle="modal" onclick="setideamodal1(<?= $idea['idea_number'] ?>)" data-bs-target="#investoridealist">
         <td><?= $idea['idea_number'] ?></td>
         <td><?= $idea['title'] ?></td>
         <td><?= $idea['risk']  ?></td>
-        <td><?= $idea['currency']  ?></td>
+        <td><?= $idea['major_sector']  ?></td>
       </tr>
       <?php endforeach; ?>
     </table>
@@ -97,7 +90,6 @@ function accepted($d)
 
 <script>
   function setideamodal1(ideaid) {
-    console.log("flag");
     fetch("api/getidea/" + ideaid, {
         method: "get",
         headers: {
@@ -107,7 +99,6 @@ function accepted($d)
       })
       .then((response) => {
         if (response.ok) {
-          console.log(response);
           return response.json(); // extract the JSON data from the response
         } else {
           console.log(response); //throw new Error('response was not ok');
@@ -131,7 +122,6 @@ function accepted($d)
         document.getElementById("idregioninv").innerHTML = data.ideainfo.region;
         document.getElementById("idcountryinv").innerHTML = data.ideainfo.country;
         document.getElementById("idcontentinv").innerHTML = data.ideainfo.content;
-        console.log("flag", data.ideainfo.expires_on);
       });
 
   }

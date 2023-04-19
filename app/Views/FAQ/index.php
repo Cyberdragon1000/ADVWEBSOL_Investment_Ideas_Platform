@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container" style="min-height: 30em;">
       <h2>Frequently Asked Questions</h2>
       <div class="accordion">
         <div class="accordion-item">
@@ -52,38 +52,6 @@
             </p>
           </div>
         </div>
-        <div class="accordion-item">
-          <button id="accordion-button-4" aria-expanded="false">
-            <span class="accordion-title"
-              >Can I submit an idea anonymously?</span
-            ><span class="icon" aria-hidden="true"></span>
-          </button>
-          <div class="accordion-content">
-            <p>
-              Yes, you can submit an idea anonymously if you prefer. However, we
-              encourage users to create an account and provide their name so
-              that other users can connect with them and discuss their ideas
-              further.
-            </p>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <button id="accordion-button-5" aria-expanded="false">
-            <span class="accordion-title"
-              >What happens if my idea gets a lot of votes?</span
-            ><span class="icon" aria-hidden="true"></span>
-          </button>
-          <div class="accordion-content">
-            <p>
-              If your idea gets a lot of votes, it will be featured on our
-              homepage and may attract the attention of investors or other
-              interested parties. However, we cannot guarantee that any
-              particular idea will result in investment opportunities.
-            </p>
-          </div>
         </div>
       </div>
     </div>
-  </body>
-  <script type="text/javascript" src="index.js"></script>
-</html>

@@ -6,7 +6,7 @@
   </div>
 </div>
 <div id="popupmodals"></div>
-<div class="container-fluid text-nowrap " style="">
+<div class="container-fluid text-nowrap " style="min-height: 30em;">
 <div class="row">
   <div class="d-flex align-items-center col-2" style="background-color: white; ">
     <div class="nav flex-column nav-pills" role="tablist"  style="flex-grow:1;">
