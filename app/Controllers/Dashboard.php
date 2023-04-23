@@ -13,6 +13,7 @@ class Dashboard extends BaseController
 		$data['title'] = ucfirst('dashboard');
 		$usertype = session('user_type');
 
+		//dashboard type based on user
 		switch ($usertype) {
 			case "RM":
 				return view('templates/header', $data) . view('dashboard_rm') . view('templates/footer');
@@ -37,27 +38,35 @@ class Dashboard extends BaseController
 		}
 	}
 
+	//Popup for opening details on a single idea
 	public function getidea($id)
 	{
 		$model = new RMideas();
 		$results = array(
+			//all information about the idea
 			"ideainfo" => $model->getselectedidea($id),
+			// List of investors Ideas has been sent to and thier decision
 			"investedinfo" => $model->getselectedideadecisions($id),
+			// List of investors Ideas has not yet been sent to
 			"notsentyet" => $model->getideanotsentlist($id)
 		);
 		return json_encode($results);
 	}
 
+	//details pop up for a single client
 	public function getinvestor($id)
 	{
 		$model = new RMinvestors();
 		$results = array(
+			//details on selected investor
 			"investorinfo" => $model->getselectedinvestor($id),
+			//list of ideas this investor has been given
 			"investedinfo" => $model->getselectedinvestordecisions($id),
 		);
 		return json_encode($results);
 	}
 
+	// send an idea for decision
 	public function sendidearm()
 	{
 		$investorid = $this->request->getPost('rmsentidea');
@@ -65,6 +74,41 @@ class Dashboard extends BaseController
 		$model = new RMideas();
 		$model->sendfordecision($ideaid, $investorid);
 		return redirect()->to('/dashboard');
+	}
+
+	// Fetches all the new ideas 
+	public function getnewideaslistrm()
+	{
+		$model = new RMIdeas();
+		return json_encode($model->getideasrm());
+	}
+
+	// Fetches all ideas sent to investors for decision
+	public function getsentideaslistrm()
+	{
+		$model = new RMinvestors();
+		return json_encode($model->getinvestordecision());
+	}
+
+	// Fetches all the investors
+	public function getinvestorslistrm()
+	{
+		$model = new RMinvestors();
+		return json_encode($model->getinvestorsrm());
+	}
+
+	//RM rejects an idea
+	public function rejectidea(){
+		$model = new RMinvestors();
+		$model->rmreject($this->request->getPost('id'));
+			return redirect()->to('/dashboard');
+	}
+
+	public function getpreferencesinvestor($id)
+	{
+		$model = new RMinvestors();
+        return json_encode($model->getpreferences($id));
+
 	}
 
 	public function senddecision()
@@ -84,42 +128,13 @@ class Dashboard extends BaseController
 		}
 	}
 
-	public function getnewideaslistrm()
-	{
-		$model = new RMIdeas();
-		return json_encode($model->getideasrm());
-	}
-
-	public function getsentideaslistrm()
-	{
-		$model = new RMinvestors();
-		return json_encode($model->getinvestordecision());
-	}
-
-	public function getinvestorslistrm()
-	{
-		$model = new RMinvestors();
-		return json_encode($model->getinvestorsrm());
-	}
-
-	public function getpreferencesinvestor($id)
-	{
-		$model = new RMinvestors();
-        return json_encode($model->getpreferences($id));
-
-	}
-
 	public function deleteidea(){
 		$ideaid = $this->request->getPost('ideadel');
 		$model = new RMinvestors();
 		$model->ideadelete($ideaid);
 			return redirect()->to('/dashboard');
 	}
-	public function rejectidea(){
-		$model = new RMinvestors();
-		$model->rmreject($this->request->getPost('id'));
-			return redirect()->to('/dashboard');
-	}
+
 
 	public function addidea(){
 		$model = new RMinvestors();

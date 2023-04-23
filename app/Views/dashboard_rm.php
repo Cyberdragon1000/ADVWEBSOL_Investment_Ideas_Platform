@@ -5,7 +5,11 @@
     </div>
   </div>
 </div>
+
+<!-- Division to put pop up dialog boxes in -->
 <div id="popupmodals"></div>
+
+<!-- Tab pills to switch between tables -->
 <div class="container-fluid text-nowrap " style="min-height: 30em;">
 <div class="row">
   <div class="d-flex align-items-center col-2" style="background-color: white; ">
@@ -15,10 +19,13 @@
       <button class="nav-link"  data-bs-toggle="pill" onclick="$('#investorslisttable').DataTable().columns.adjust();" data-bs-target="#investorspreferencestab"  role="tab" >Investor's Preferences</button>
     </div>
   </div>
+
+  <!-- Tab panes shown when clicking tab pills -->
   <div class=" col-10 ps-1">
     <div class="tab-content pb-1" style="background-color: white;   min-height: 25em;" >
       <div class="tab-pane fade show active" id="newideastab" role="tabpanel">
         
+      <!-- New ideas sent by Idea Giver table -->
         <div class="container text-nowrap " >
           <h1 class="text-center">New Ideas</h1>
           <table class="table table-hover mb-0 " id="newideastable">
@@ -38,8 +45,9 @@
             </tbody>
           </table>
         </div>
-
       </div>
+
+      <!-- Table for updates on investments by Investors -->
       <div class="tab-pane fade" id="sendideastab" role="tabpanel" >
         <div class="container text-nowrap">
           <h1 class="text-center">Ideas Investment Status</h1>
@@ -49,8 +57,8 @@
                 <th  style="background-color: #009879;">No.</th>
                 <th>Title</th>
                 <th>Risk Rating</th>
-                <th>Investor Name</th>
                 <th>Expiry Date</th>
+                <th>Investor Name</th>
                 <th style="background-color: #009879;">Decision</th>
                 <th style="background-color: #009879;" >Actions</th>
             </tr>
@@ -59,8 +67,9 @@
             </tbody>
           </table>
         </div>
-
       </div>
+
+      <!-- Table to show Investor Prefernces -->
       <div class="tab-pane fade" id="investorspreferencestab" role="tabpanel" >
         <div class="container text-nowrap">
           <h1 class="text-center">Investors List</h1>
@@ -89,7 +98,7 @@
   </div>
 </div>
 
-  
+<!-- Calling all init functions-->
 <script>
 $(document).ready(function() {
   $.getScript("/assets/js/jsitems.js",function(){

@@ -11,6 +11,7 @@ function setElementValue(stringa, stringb) {
       element.value = stringb;
 }
 
+// colors row bottom border red if expiring idea, green if new, blue otherwise
 function newideasrowcolor(publisheddate,expirydate) {
   const expdate = new Date(expirydate);
   const pubdate = new Date(publisheddate);
@@ -29,6 +30,7 @@ function newideasrowcolor(publisheddate,expirydate) {
 
 }
 
+// colors row bottom red if idea rejected , green if accepted and blue if pending
 function sentideasrowcolor(decision) {
   if (decision=="R") {
     return "border-3 border-bottom border-danger";
@@ -41,7 +43,7 @@ function sentideasrowcolor(decision) {
     return "border-3 border-bottom border-success";
 }
 
-   
+// sets the data in idea and send to pop ups
 function setideamodal(ideaid) {
       fetch("api/getidea/"+ideaid,{
           method: "get",
@@ -76,12 +78,13 @@ function setideamodal(ideaid) {
        setElementInnerHTML("idcontent",data.ideainfo.content);
        setElementValue("rejectidea",data.ideainfo.idea_number);
 
-       
+       //sets the table for who all the idea had been sent to and their decisions
        let sento= "<hr>No one yet";
        if (data.investedinfo.length>0){
             sento="<table class=\"table\"><thead ><tr class=\"text-center\"><th>Name</th><th>Decision</th></tr></thead><tbody>"
             for (let index = 0; index < data.investedinfo.length; index++) {
-              sento+="<tr class=\"fixedhrows text-center\"><td>"+ data.investedinfo[index].name+"</td><td>"+ data.investedinfo[index].decision +"</td></tr>";
+              sento+="<tr class=\"fixedhrows text-center\"><td>"+ data.investedinfo[index].name+"</td><td>"+ 
+              data.investedinfo[index].decision +"</td></tr>";
             }
             sento+="</tbody></table>";
         }
@@ -89,26 +92,29 @@ function setideamodal(ideaid) {
        setElementDisabled("sendideabutton",true);
        setElementValue("ideaattr",data.ideainfo.idea_number);
 
-
-
+        // default set the input form to no more investors to send it to
        let notsentto="<select class=\"form-select\"disabled><option selected>Sent to every investor already</option></select>";
        if (data.notsentyet.length>0){
             notsentto="<select class=\"form-select\" name=\"rmsentidea\">";
             for (let index = 0; index < data.notsentyet.length; index++) {
-              notsentto+="<option value=\""+ data.notsentyet[index].investor_id+"\">"+ data.notsentyet[index].investor_id +" - "+data.notsentyet[index].name+"</option>";
+              // insert each investor name and id into the select dropdown
+              notsentto+="<option value=\""+ data.notsentyet[index].investor_id+"\">"+ data.notsentyet[index].investor_id +
+              " - "+data.notsentyet[index].name+"</option>";
             }
             notsentto+="</select>";
+            //enable the send button
             setElementDisabled("sendideabutton",false);
 
 
         }
-
+        //set send to popup
         setElementInnerHTML("notyetsenttolist",notsentto);
       }
         );
   
 }
 
+//sets the content for investors pop up
 function setinvestormodal(investorid) {
       fetch("api/getinvestor/"+investorid,{
           method: "get",
@@ -120,9 +126,7 @@ function setinvestormodal(investorid) {
         .then((response) => {
             if (response.ok) {
               return response.json(); // extract the JSON data from the response
-            } else {
-              throw new Error('response was not ok');
-            }
+            } else { throw new Error('response was not ok');}
         })
       .then((data) =>{ 
        setElementInnerHTML("inmodaltitle",data.investorinfo.name);
@@ -138,28 +142,26 @@ function setinvestormodal(investorid) {
        setElementInnerHTML("inregion",data.investorinfo.region);
        setElementInnerHTML("incountry",data.investorinfo.country);
        setElementInnerHTML("incontent",data.investorinfo.preferences);
+
+       // sets the table about ideas sent and decisions on it
        let text= "<hr>No investments yet";
        if (data.investedinfo.length>0){
        text="<table class=\"table\"><thead ><tr class=\"text-center\"><th>Name</th><th>Decision</th></tr></thead><tbody>"
        for (let index = 0; index < data.investedinfo.length; index++) {
-              
-        text+="<tr class=\"fixedhrows text-center\"><td>"+ data.investedinfo[index].idea_id+"</td><td>"+ data.investedinfo[index].decision +"</td></tr>";
-        
+        text+="<tr class=\"fixedhrows text-center\"><td>"+ data.investedinfo[index].idea_id+"</td><td>"+ 
+        data.investedinfo[index].decision +"</td></tr>";
        }
        text+="</tbody></table>";
       }
       setElementInnerHTML("sentideaslist",text);
-
       }
         );
-  
 }
 
-function toy(){
-  console.log("flag");
-}
-
+//intializes all datatables
 function ideastableinit() {
+
+  //fetch and display the contents of the new ideas table
   let table = new DataTable('#newideastable', {
     scroller:    true,
     scrollX: true,
@@ -200,22 +202,23 @@ function ideastableinit() {
         { "data": "abstract" },
         { "data": "first_name" },
         { 
+          // sets the last column to have a button that opens the idea pop up
           render: function ( data, type, row, meta) { 
             if(type === 'display'){
-              return `<button type="button"  onclick="setideamodal(${row.idea_number})"  data-bs-toggle="modal" data-bs-target="#openidea" class="btn btn-info">View</button>`; 
+              return `<button type="button"  onclick="setideamodal(${row.idea_number})"  data-bs-toggle="modal" 
+              data-bs-target="#openidea" class="btn btn-info">View</button>`; 
             }           
-          },  "defaultContent":"choices"//"country" }
-
+          },  "defaultContent":"choices"
           
         }
       ],
+      //adds color to the row
       "createdRow": (row, data, dataIndex) => {
             $(row).addClass(newideasrowcolor(data.published_on,data.expires_on));
       }
-    // options
   });
 
-
+//sent ideas table initalization
   let table2 = new DataTable('#sentideastable', {
     scroller:    true,
     scrollX: true,
@@ -264,20 +267,23 @@ function ideastableinit() {
           },  "defaultContent":"pending"
          },
         { render: function ( data, type, row, meta) { 
+          //view button that opens  pop up
             if(type === 'display'){
-              return `<button type="button"  onclick="setideamodal(${row.idea_number})"  data-bs-toggle="modal" data-bs-target="#openidea" class="btn btn-info">View</button>`; 
+              return `<button type="button"  onclick="setideamodal(${row.idea_number})"  
+              data-bs-toggle="modal" data-bs-target="#openidea" class="btn btn-info">View</button>`; 
             }           
-          },  "defaultContent":"choices"//"country" 
+          },  "defaultContent":"choices"
         }
 
           
       ],
       "createdRow": (row, data, dataIndex) => {
+        // adds color to the row
             $(row).addClass(sentideasrowcolor(data.decision));
       }
-    // options
   });
 
+  //investors data table 
   let table3 = new DataTable('#investorslisttable', {
     pageLength: 1,
     scroller:    true,
@@ -321,20 +327,24 @@ function ideastableinit() {
         { "data": "minor_sector" },
         { render: function ( data, type, row, meta) { 
             if(type === 'display'){
-              return `<button type="button" onclick="setinvestormodal(${row.investor_id})"  data-bs-toggle="modal" data-bs-target="#openinvestor" class="btn btn-info">View</button>`; 
+              //add view button in last col that shows investor pop up
+              return `<button type="button" onclick="setinvestormodal(${row.investor_id})"  
+              data-bs-toggle="modal" data-bs-target="#openinvestor" class="btn btn-info">View</button>`; 
             }           
           },  "defaultContent":"choices" }
       ],
       "createdRow": (row, data, dataIndex) => {
+        //adds color to the row
             $(row).addClass("border-3 border-bottom border-info");
       }
-    // options
   });
 }
 
-
+//initalize the pop up dialog boxes 
 function initpopups() {
   data=`
+
+  <!--Action Buttons -->
   <div class="modal fade" id="openidea" >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -430,11 +440,15 @@ function initpopups() {
           
         </div>
     </div>
-      
+    <!--Action Buttons -->
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#sendidea" data-bs-toggle="modal" data-bs-dismiss="modal">Send to</button>
+      <!--Open idea send pop up-->
+        <button class="btn btn-primary" data-bs-target="#sendidea" data-bs-toggle="modal" data-bs-dismiss="modal">
+          Send to</button>
         <form action="/rejectidea" method="post">
+        <!--Close pop up -->
         <input type="hidden" name="id" id="rejectidea"  value="someValue">
+        <!--Reject idea -->
         <button class="btn btn-danger" type="submit"  data-bs-dismiss="modal">Reject</button>
         </form>
         <button class="btn btn-info" data-bs-dismiss="modal">Close</button>
@@ -443,6 +457,7 @@ function initpopups() {
   </div>
 </div>
 
+<!--Send Idea pup up -->
 <div class="modal fade" id="sendidea" >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -451,21 +466,27 @@ function initpopups() {
         <button class="btn-close col-1" data-bs-dismiss="modal" ></button>
       </div>
     <div class="modal-body">
-        Sending the idea "<b id="idmodaltitle2"></b>" to <hr>
+        Sending the idea <b id="idmodaltitle2"></b> to <hr>
         <br>
         <form action="/sendidearm" method="post" id="ideasendrm">
         <input type="hidden" name="ideano" id="ideaattr"value="someValue">
+        <!--List of investors to send to -->
         <div id="notyetsenttolist"></div>
   </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success" id="sendideabutton" type="submit" form="ideasendrm" value="submit" data-bs-dismiss="modal">Confirm</button>
+        <!--Send idea -->
+        <button class="btn btn-success" id="sendideabutton" type="submit" form="ideasendrm" value="submit" 
+        data-bs-dismiss="modal">Confirm</button>
+        <!--Go back to idea pop up-->
         <button class="btn btn-primary" data-bs-target="#openidea" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
       </div>
     </div>
   </div>
 </div>
 
+
+<!-- Investor popup -->
 <div class="modal fade" id="openinvestor" >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -555,6 +576,7 @@ function initpopups() {
     </div>
       
       <div class="modal-footer">
+      <!-- close pop up -->
         <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
     </div>

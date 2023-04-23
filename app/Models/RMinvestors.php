@@ -6,18 +6,48 @@ use CodeIgniter\Model;
 
 class RMinvestors extends Model
 {
+    // Query all investors
     public function getinvestorsrm() {
         $builder = $this->db->table('investorprefs');
-        $builder->select('*');
-        // not needed $builder->where('status', 'active');
+        $builder->select('minor_sector,major_sector,currency,instruments,product_type,name,risk,key_terms,expires_on,investor_id');
         return $builder->get()->getResultArray();
     }
 
+    //query the idea and the the decision made on it by the investor
+    public function getinvestordecision() {
+        $builder = $this->db->table('decision');
+        $builder->select('ideas.idea_number, ideas.title, ideas.abstract, ideas.expires_on, ideas.risk, 
+        investorprefs.name, decision.decision');
+        $builder->join('ideas', 'decision.idea_id = ideas.idea_number', 'inner');
+        $builder->join('investorprefs', 'decision.investor_id = investorprefs.investor_id', 'inner');
+
+        return $builder->get()->getResultArray();
+    }
+
+    // Query all details on investor
     public function getselectedinvestor($investorid) {
         $builder = $this->db->table('investorprefs');
         $builder->select('*');
         $builder->where('investor_id', $investorid);
         return $builder->get()->getrow();
+    }
+
+      //Query all decisions on ideas sent to the investor
+      public function getselectedinvestordecisions($id) {
+        $builder = $this->db->table('decision');
+        $builder->select('*');
+        $builder->where('investor_id', $id);
+        return $builder->get()->getResultArray();
+    }
+
+    //Update selected idea to be rejected by RM
+    public function rmreject($id){
+        $data = array();
+        $builder = $this->db->table('ideas');
+        $builder->set('approval','R');
+        $builder->where('idea_number', $id);
+        $builder->update();
+        
     }
 
     public function getpreferences($investorid) {
@@ -27,21 +57,9 @@ class RMinvestors extends Model
         return $builder->get()->getrow();
     }
 
-    public function getinvestordecision() {
-        $builder = $this->db->table('decision');
-        $builder->select('ideas.idea_number, ideas.title, ideas.abstract, ideas.expires_on, ideas.risk, investorprefs.name, decision.decision');
-        $builder->join('ideas', 'decision.idea_id = ideas.idea_number', 'inner');
-        $builder->join('investorprefs', 'decision.investor_id = investorprefs.investor_id', 'inner');
 
-        return $builder->get()->getResultArray();
-    }
 
-    public function getselectedinvestordecisions($id) {
-        $builder = $this->db->table('decision');
-        $builder->select('*');
-        $builder->where('investor_id', $id);
-        return $builder->get()->getResultArray();
-    }
+  
     
     public function sendfordecision($id,$choice,$idea) {
         $builder = $this->db->table('decision');
@@ -126,14 +144,7 @@ class RMinvestors extends Model
 
     }
 
-    public function rmreject($id){
-        $data = array();
-        $builder = $this->db->table('ideas');
-        $builder->set('approval','R');
-        $builder->where('idea_number', $id);
-        $builder->update();
-        
-    }
+    
 
     public function prefupdate($id,$a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l){
         $builder = $this->db->table('investorprefs');
